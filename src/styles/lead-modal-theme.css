@@ -1,0 +1,43 @@
+/* Revivo brand tokens + utilities required by <LeadModal> / <PremiumButton>
+   (src/components/site/lead-modal.tsx, src/components/site/primitives.tsx).
+   Each POS demo page has its own isolated globals.css/theme, so this partial
+   is imported there to make the shared contact-form modal render correctly. */
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-royal: var(--royal);
+  --color-grape: var(--grape);
+  --color-grape-soft: var(--grape-soft);
+  --color-cta: var(--cta);
+  --color-cta-soft: var(--cta-soft);
+  --color-ink: var(--ink);
+}
+
+:root {
+  --navy: #0a1628;
+  --royal: #1d4ed8;
+  --grape: #7c3aed;
+  --grape-soft: #a855f7;
+  --cta: #f97316;
+  --cta-soft: #fb923c;
+  --ink: #1e293b;
+}
+
+@layer utilities {
+  .bg-cta-gradient {
+    background: linear-gradient(120deg, #fb923c 0%, #f97316 100%);
+  }
+  .shadow-lift {
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 30px 60px -25px rgba(15, 23, 42, 0.22);
+  }
+  .shadow-glow-purple {
+    box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.18), 0 24px 60px -20px rgba(124, 58, 237, 0.45);
+  }
+  .shadow-glow-cta {
+    box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.20), 0 24px 60px -20px rgba(249, 115, 22, 0.55);
+  }
+  .premium-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+  .premium-scroll::-webkit-scrollbar-track { background: transparent; }
+  .premium-scroll::-webkit-scrollbar-thumb { background: rgba(124, 58, 237, 0.3); border-radius: 999px; }
+  .premium-scroll::-webkit-scrollbar-thumb:hover { background: rgba(124, 58, 237, 0.5); }
+}
