@@ -89,15 +89,15 @@ export function Footer({
             </ul>
           </div>
 
-          {/* More — right column, pushed to extreme right */}
-          <div className="flex flex-col items-end sm:items-start">
+          {/* More — second column; left-aligned to match Explore beside it */}
+          <div className="flex flex-col items-start">
             <h3 className="text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-400 sm:text-xs sm:tracking-[0.18em]">More</h3>
-            <ul className="mt-2 space-y-0 text-right sm:mt-4 sm:space-y-2.5 sm:text-left">
+            <ul className="mt-2 space-y-0 text-left sm:mt-4 sm:space-y-2.5 sm:text-left">
               {ALL_PAGES.filter((p) => !NAV_ITEMS.find((n) => n.key === p.key)).map((item) => (
-                <li key={item.key} className="text-right sm:text-left">
+                <li key={item.key} className="text-left sm:text-left">
                   <button
                     onClick={() => handleNav(item.key)}
-                    className="text-xs text-slate-300 transition-colors hover:text-white max-sm:block max-sm:w-full max-sm:py-2 sm:text-sm"
+                    className="text-xs text-slate-300 transition-colors hover:text-white max-sm:block max-sm:w-full max-sm:py-2 max-sm:text-left sm:text-sm"
                   >
                     {item.label}
                   </button>

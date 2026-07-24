@@ -158,8 +158,10 @@ function Hero({ onNavigate, onCTA }: { onNavigate: (p: PageKey) => void; onCTA: 
               transition={{ duration: 0.7, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
               className="mt-5 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-3 sm:mt-8"
             >
-              <Magnetic strength={0.3}>
-                <PremiumButton size="lg" onClick={onCTA} icon={<ArrowRight className="h-4 w-4" />}>
+              {/* Magnetic is inline-block, so the button inside it won't stretch like its
+                  unwrapped sibling does in the stacked mobile column — match them explicitly. */}
+              <Magnetic strength={0.3} className="max-sm:w-full">
+                <PremiumButton size="lg" onClick={onCTA} icon={<ArrowRight className="h-4 w-4" />} className="max-sm:w-full">
                   Book Free Consultation
                 </PremiumButton>
               </Magnetic>
@@ -436,15 +438,23 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
           </Reveal>
         </div>
 
-        <Stagger className="mt-2 grid grid-cols-2 gap-1.5 sm:mt-4 sm:gap-5 lg:auto-rows-fr lg:grid-cols-4" stagger={0.06}>
+        <Stagger className="mt-2 grid grid-cols-2 gap-2 sm:mt-4 sm:gap-5 lg:auto-rows-fr lg:grid-cols-4" stagger={0.06}>
           {top.map((s, i) => {
             // Bento rhythm: the first card owns a 2×2 block, card 7 runs wide.
             const hero = i === 0;
             const wide = i === 6;
+            // The bento is tuned for the 4-col desktop grid. On the 2-col mobile grid a
+            // mid-list col-span-2 orphans its neighbours into half-empty rows, so drop it
+            // there and instead let the last card fill the row when the tail count is odd.
+            const tail = i === top.length - 1 && (top.length - 1) % 2 === 1;
             return (
               <StaggerItem
                 key={s.slug}
-                className={cn(hero && "col-span-2 lg:row-span-2", wide && "col-span-2")}
+                className={cn(
+                  hero && "col-span-2 lg:row-span-2",
+                  wide && "col-span-2 max-sm:col-span-1",
+                  tail && "max-sm:col-span-2",
+                )}
               >
                 <Spotlight className="h-full overflow-hidden rounded-xl sm:rounded-2xl" size={320}>
                   <button
@@ -680,7 +690,7 @@ function WhyChoose() {
           title={<>The difference between a website and a <span className="text-gradient-purple">business asset.</span></>}
           subtitle="Six things you get working with me that you won't find at an agency or on Upwork."
         />
-        <Stagger className="grid grid-cols-2 gap-1.5 sm:gap-5 lg:grid-cols-3" stagger={0.07}>
+        <Stagger className="grid grid-cols-2 gap-2 sm:gap-5 lg:grid-cols-3" stagger={0.07}>
           {WHY_CHOOSE.map((w, i) => (
             <StaggerItem key={w.title}>
               <div className="group relative h-full overflow-hidden rounded-xl border border-slate-200 bg-white p-2.5 transition-all duration-300 hover:-translate-y-1 hover:border-grape/30 hover:shadow-lift sm:rounded-2xl sm:p-7">

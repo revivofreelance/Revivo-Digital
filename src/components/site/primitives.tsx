@@ -360,11 +360,13 @@ export function SectionHeading({
   center?: boolean;
   className?: string;
 }) {
+  // Centring is desktop-only: consumers put left-aligned cards or copy directly
+  // below, so a centred heading reads as misalignment in one narrow column.
   return (
-    <div className={cn(center && "mx-auto text-center", "max-w-2xl", className)}>
+    <div className={cn(center && "mx-auto text-center max-sm:text-left", "max-w-2xl", className)}>
       {eyebrow && (
         <Reveal>
-          <Eyebrow className={center ? "mx-auto" : ""}>{eyebrow}</Eyebrow>
+          <Eyebrow className={center ? "mx-auto max-sm:mx-0" : ""}>{eyebrow}</Eyebrow>
         </Reveal>
       )}
       <Reveal delay={0.05}>
@@ -374,7 +376,7 @@ export function SectionHeading({
       </Reveal>
       {subtitle && (
         <Reveal delay={0.1}>
-          <p className={cn("mt-2 text-pretty text-sm text-slate-600 sm:mt-3 sm:text-lg", center && "mx-auto")}>
+          <p className={cn("mt-2 text-pretty text-sm text-slate-600 sm:mt-3 sm:text-lg", center && "mx-auto max-sm:mx-0")}>
             {subtitle}
           </p>
         </Reveal>

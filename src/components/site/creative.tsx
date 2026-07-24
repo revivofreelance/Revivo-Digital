@@ -70,7 +70,7 @@ export function Manifesto() {
   ];
 
   return (
-    <section ref={ref} className="relative overflow-hidden bg-white px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+    <section ref={ref} className="relative overflow-hidden bg-white px-4 py-3 sm:px-6 sm:py-10 lg:px-8">
       <div className="absolute inset-0 -z-10 bg-aurora-soft" />
       <div className="mx-auto max-w-5xl">
         <motion.div style={{ opacity }}>
@@ -79,7 +79,7 @@ export function Manifesto() {
               <span className="h-1.5 w-1.5 rounded-full bg-grape animate-pulse" /> The philosophy
             </div>
           </Reveal>
-          <div className="mt-5 flex flex-wrap gap-x-3 gap-y-2 sm:mt-8">
+          <div className="mt-5 flex flex-wrap gap-x-3 gap-y-2 max-sm:gap-x-1 max-sm:gap-y-1 sm:mt-8">
             {words.map((word, i) => (
               <motion.span
                 key={i}
@@ -88,7 +88,7 @@ export function Manifesto() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
                 className={cn(
-                  "font-display text-base font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl",
+                  "font-display text-base font-extrabold tracking-tight max-sm:text-lg sm:text-4xl md:text-5xl lg:text-6xl",
                   word.includes("salesperson") || word.includes("24/7,") || word.includes("raise.")
                     ? "text-gradient-purple"
                     : "text-navy"
@@ -197,7 +197,7 @@ export function BigNumber({
   decimals?: number;
 }) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-navy via-royal to-grape px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+    <section className="relative overflow-hidden bg-gradient-to-br from-navy via-royal to-grape px-4 py-3 sm:px-6 sm:py-10 lg:px-8">
       <div className="absolute inset-0 bg-grid-dark opacity-20" />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-grape/40 blur-3xl animate-aurora" />
