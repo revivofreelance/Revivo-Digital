@@ -292,11 +292,11 @@ export function ProblemSection() {
               return (
                 <li
                   key={p.title}
-                  className="group flex items-start gap-2 px-2 py-1.5 transition-colors duration-300 hover:bg-white/[0.05] sm:gap-3.5 sm:px-4 sm:py-3"
+                  className="group flex items-start gap-2 px-2 py-1.5 transition-colors duration-300 hover:bg-white/[0.05] max-sm:items-center sm:gap-3.5 sm:px-4 sm:py-3"
                 >
                   <span
                     className={cn(
-                      "mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-lg bg-gradient-to-br text-white shadow-lg transition-transform duration-300 group-hover:scale-110 sm:h-9 sm:w-9",
+                      "grid h-6 w-6 shrink-0 place-items-center rounded-lg bg-gradient-to-br text-white shadow-lg transition-transform duration-300 group-hover:scale-110 sm:mt-0.5 sm:h-9 sm:w-9",
                       pos ? "from-grape to-royal" : "from-rose-500 to-rose-700",
                     )}
                   >
@@ -320,7 +320,10 @@ export function ProblemSection() {
                         {p.fix}
                       </span>
                     </div>
-                    <p className="mt-0.5 text-[11px] leading-snug text-slate-400 sm:text-sm">
+                    {/* Six two-line explanations stacked up read as a wall of text
+                        on a phone. The title plus its fix tag already carries the
+                        point there; the detail is desktop-only. */}
+                    <p className="mt-0.5 hidden text-[11px] leading-snug text-slate-400 sm:block sm:text-sm">
                       {p.desc}
                     </p>
                   </div>
