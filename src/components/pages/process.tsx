@@ -371,14 +371,13 @@ function WhatYouGet() {
 const TOUCHPOINTS = [
   { icon: Phone, label: "Kickoff call (60 min)", note: "After deposit — we align on goals, scope, and success metrics." },
   { icon: Calendar, label: "Weekly progress demo (30 min)", note: "Live walkthrough of what shipped that week + what's next." },
-  { icon: MessageCircle, label: "Async updates via WhatsApp/Email", note: "Questions, screenshots, quick decisions — no scheduling needed." },
+  { icon: MessageCircle, label: "Async updates over email", note: "Questions, screenshots, quick decisions — no scheduling needed." },
   { icon: FileText, label: "Feedback rounds in Figma", note: "Comments directly on the designs. Two structured feedback rounds." },
   { icon: Phone, label: "Launch training call (90 min)", note: "Walk-through of editing content, managing inquiries, and analytics." },
 ];
 
 const RESPONSE_TIMES = [
   { icon: Mail, channel: "Email", commitment: "Within 4 hours", note: "Business hours, Mon–Fri" },
-  { icon: MessageCircle, channel: "WhatsApp", commitment: "Within 1 hour", note: "Business hours, Mon–Fri" },
   { icon: Zap, channel: "Urgent issues", commitment: "Same day", note: "Site down, broken checkout, etc." },
   { icon: Shield, channel: "Non-urgent", commitment: "Within 24 hours", note: "Tweaks, questions, ideas" },
 ];

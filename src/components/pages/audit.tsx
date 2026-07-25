@@ -335,7 +335,7 @@ export function AuditPage({
                       required
                     />
                     <Field
-                      label="WhatsApp (optional)"
+                      label="Phone (optional)"
                       name="phone"
                       type="tel"
                       placeholder="+91 98765 43210"

@@ -129,7 +129,7 @@ export function LeadModal({
                     <Field label="Last name" name="lastName" placeholder="Sharma" required />
                   </div>
                   <Field label="Email" name="email" type="email" placeholder="priya@clinic.com" required />
-                  <Field label="WhatsApp (optional)" name="phone" type="tel" placeholder="+91 98765 43210" />
+                  <Field label="Phone (optional)" name="phone" type="tel" placeholder="+91 98765 43210" />
                   <Field label="Business name" name="business" placeholder="Bright Smile Dental" />
                   <div>
                     <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-500">

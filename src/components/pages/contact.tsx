@@ -169,7 +169,7 @@ export function ContactPage({
                         autoComplete="email"
                       />
                       <Field
-                        label="WhatsApp"
+                        label="Phone (optional)"
                         name="phone"
                         type="tel"
                         placeholder="+91 98765 43210"
