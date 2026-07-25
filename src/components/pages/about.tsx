@@ -88,7 +88,7 @@ function Story() {
                       Independent Software Engineer
                     </div>
                     <div className="mt-0.5 text-xs text-white/70 sm:mt-1 sm:text-sm">
-                      Bengaluru, India
+                      Working worldwide
                     </div>
                   </div>
                 </div>
@@ -151,7 +151,7 @@ function Story() {
             <div className="mt-4 space-y-3 sm:mt-7 sm:space-y-5">
               <Reveal delay={0.1}>
                 <p className="text-pretty text-sm leading-relaxed text-slate-600 sm:text-lg">
-                  I started writing code professionally in 2019, building products at a couple of software companies in Bengaluru. I shipped dashboards, internal tools, and customer-facing apps used by thousands of people. The work was good — well-paid, technically interesting, and surrounded by smart teammates. But over time I noticed something that bugged me. Every time a friend with a small business asked me to look at their website, I'd find the same thing: a slow, templated, generic site that was actively costing them customers. The local dentist, the neighborhood restaurant, the gym down the road — all being underserved by an industry that had decided small budgets weren't worth real craft.
+                  I started writing code professionally in 2019, building products at a couple of software companies. I shipped dashboards, internal tools, and customer-facing apps used by thousands of people. The work was good — well-paid, technically interesting, and surrounded by smart teammates. But over time I noticed something that bugged me. Every time a friend with a small business asked me to look at their website, I'd find the same thing: a slow, templated, generic site that was actively costing them customers. The local dentist, the neighborhood restaurant, the gym down the road — all being underserved by an industry that had decided small budgets weren't worth real craft.
                 </p>
               </Reveal>
               <Reveal delay={0.15}>
@@ -200,7 +200,7 @@ function Mission() {
           center
           eyebrow="My Mission"
           title={<>Why I do this <span className="text-gradient-purple">work.</span></>}
-          subtitle="I'm not trying to be the biggest web studio in India. I'm trying to be the most trusted engineer a local business owner will ever work with. Here's what drives every project I take on."
+          subtitle="I'm not trying to be the biggest web studio out there. I'm trying to be the most trusted engineer a local business owner will ever work with. Here's what drives every project I take on."
         />
 
         <Stagger className="mt-2 grid grid-cols-1 gap-2 sm:mt-6 sm:grid-cols-3 sm:gap-6" stagger={0.08}>

@@ -1501,8 +1501,8 @@ export const BLOG_POSTS: BlogPost[] = [
         body: "Your website needs to be fast, mobile-first, and structured so Google understands exactly what you do and where you do it. Here's what matters most:",
         list: [
           "Put your NAP (Name, Address, Phone) in the footer of every page — exactly matching your Google Business Profile, character for character",
-          "Create a separate page for each service you offer — one 'Services' page doesn't rank, 'Teeth Whitening Bangalore' does",
-          "Create a page for each location you serve if you have multiple — '/dentist-koramangala', '/dentist-indiranagar'",
+          "Create a separate page for each service you offer — one 'Services' page doesn't rank, 'Teeth Whitening [your city]' does",
+          "Create a page for each location you serve if you have multiple — '/dentist-north-side', '/dentist-downtown'",
           "Use schema markup (LocalBusiness schema) on your homepage — this tells Google your business type, hours, and location in machine-readable format",
           "Make sure your site loads in under 2 seconds on mobile — Google's Core Web Vitals directly impact rankings",
           "Include an embedded Google Map on your contact page — it reinforces your location signal",
@@ -1543,7 +1543,7 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: "Phase 5: Content and link signals",
         body: "Finally, the things that separate page 2 from page 1:",
         list: [
-          "Write one blog post per month answering a question your customers actually ask — 'How much does teeth whitening cost in Bangalore?' is a blog post that will bring you patients for years",
+          "Write one blog post per month answering a question your customers actually ask — 'How much does teeth whitening cost in [your city]?' is a blog post that will bring you patients for years",
           "Get links from local organizations you support or are members of — chambers of commerce, local charities, business associations",
           "Sponsor a local event or sports team and get a link from their website",
           "Get featured in local media — a single mention in a local newspaper's website is worth 50 directory links",
@@ -1566,7 +1566,7 @@ export const BLOG_POSTS: BlogPost[] = [
     thumbnail: "website-speed",
     content: [
       {
-        body: "In October 2024, I had a client — a dental clinic in Bangalore — accidentally teach me a lesson about website speed that I'll never forget. They didn't mean to. Their developer added a high-resolution hero video to their homepage (because they thought it looked premium), and over the next two weeks, their new patient bookings dropped by 27%. Here's what happened, why it happened, and what it cost them.",
+        body: "In October 2024, I had a client — a dental clinic — accidentally teach me a lesson about website speed that I'll never forget. They didn't mean to. Their developer added a high-resolution hero video to their homepage (because they thought it looked premium), and over the next two weeks, their new patient bookings dropped by 27%. Here's what happened, why it happened, and what it cost them.",
       },
       {
         heading: "The setup",
@@ -1577,7 +1577,7 @@ export const BLOG_POSTS: BlogPost[] = [
         body: "The clinic's marketing manager attended a webinar where someone said 'video increases engagement.' She decided, without telling me, to add a 12MB autoplay background video to the homepage hero section. She asked their in-house IT person to do it. He added the video file directly to the page — no compression, no lazy loading, no mobile fallback.",
       },
       {
-        body: "The result was immediate. The site's load time went from 1.2 seconds to 4.8 seconds on mobile. On slower 3G connections (which 40% of their mobile visitors still use in parts of Bangalore), it took 9+ seconds. Google's Core Web Vitals collapsed. But nobody noticed for two weeks because they weren't tracking conversions daily.",
+        body: "The result was immediate. The site's load time went from 1.2 seconds to 4.8 seconds on mobile. On slower 3G connections (which 40% of their mobile visitors still use in parts of their city), it took 9+ seconds. Google's Core Web Vitals collapsed. But nobody noticed for two weeks because they weren't tracking conversions daily.",
       },
       {
         callout: {
@@ -1603,7 +1603,7 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: "The real cost was higher than it looked",
         body: "The ₹97,200 in lost bookings over 16 days was just the tip of the iceberg. The real damage was:",
         list: [
-          "Lost Google rankings — their site dropped from position 2 to position 5 for 'dentist koramangala' because Core Web Vitals are a ranking factor. That drop persisted for 3 months even after we fixed the speed, costing them an estimated 30% of organic traffic",
+          "Lost Google rankings — their site dropped from position 2 to position 5 for 'dentist near me' because Core Web Vitals are a ranking factor. That drop persisted for 3 months even after we fixed the speed, costing them an estimated 30% of organic traffic",
           "Lost brand trust — visitors who bounced at the slow loading page associated the clinic with 'slow' and 'outdated'. Hard to measure, but real",
           "Lost referral traffic — patients who would have shared the website with friends didn't, because they never had a good experience on it",
           "Wasted ad spend — they were running Google Ads sending traffic to a slow page. The cost per acquisition doubled overnight",
@@ -2022,7 +2022,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         heading: "Rule 4: Specificity sells",
-        body: "Vague copy doesn't convert. Specific copy does. 'Thousands of happy customers' is vague and forgettable. '847 happy patients in Koramangala' is specific and believable. Specificity builds trust because it shows you're not making things up — you actually know your numbers.",
+        body: "Vague copy doesn't convert. Specific copy does. 'Thousands of happy customers' is vague and forgettable. '847 happy patients this year' is specific and believable. Specificity builds trust because it shows you're not making things up — you actually know your numbers.",
         list: [
           "Instead of 'fast load times' → 'Loads in 1.2 seconds on mobile'",
           "Instead of 'many clients' → '847 happy patients since 2019'",

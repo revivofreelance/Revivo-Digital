@@ -38,7 +38,7 @@ const PRIVACY: LegalDoc = {
     {
       id: "collect",
       heading: "Information I collect",
-      body: "I collect only the information you voluntarily provide when you fill out a contact form, request a free audit, or email me directly. This typically includes your name, email address, phone number, business name, and whatever you write in your message. I do not use hidden tracking pixels, browser fingerprinting, or third-party data brokers to enrich your profile. Website analytics are collected anonymously in aggregate using privacy-friendly tools — I see that \"someone in Bengaluru visited my pricing page,\" not who that someone is.",
+      body: "I collect only the information you voluntarily provide when you fill out a contact form, request a free audit, or email me directly. This typically includes your name, email address, phone number, business name, and whatever you write in your message. I do not use hidden tracking pixels, browser fingerprinting, or third-party data brokers to enrich your profile. Website analytics are collected anonymously in aggregate using privacy-friendly tools — I see that \"someone visited my pricing page,\" not who that someone is.",
     },
     {
       id: "use",

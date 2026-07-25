@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Mail, MapPin, Clock, Sparkles } from "lucide-react";
+import { ArrowRight, Mail, Clock, Sparkles } from "lucide-react";
 import { NAV_ITEMS, ALL_PAGES, type PageKey } from "@/lib/site-data";
 import { PremiumButton } from "./primitives";
 
@@ -68,7 +68,7 @@ export function Footer({
               </div>
             </button>
             <p className="mt-2 max-w-xs text-xs leading-relaxed text-slate-400 sm:mt-5 sm:text-sm">
-              Independent freelance software engineer building premium digital experiences for local businesses. Based in Bengaluru, working worldwide.
+              Independent freelance software engineer building premium digital experiences for local businesses. Working worldwide.
             </p>
           </div>
 
@@ -113,10 +113,6 @@ export function Footer({
               <li className="flex items-start gap-2 text-xs text-slate-300 sm:text-sm">
                 <Mail className="mt-0.5 h-3.5 w-3.5 shrink-0 text-cta sm:h-4 sm:w-4" />
                 <a href="mailto:revivodigitals@gmail.com" className="hover:text-white max-sm:inline-block max-sm:py-2">revivodigitals@gmail.com</a>
-              </li>
-              <li className="flex items-start gap-2 text-xs text-slate-300 sm:text-sm">
-                <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-cta sm:h-4 sm:w-4" />
-                <span>Indiranagar, Bengaluru, India</span>
               </li>
               <li className="flex items-start gap-2 text-xs text-slate-300 sm:text-sm">
                 <Clock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-cta sm:h-4 sm:w-4" />
