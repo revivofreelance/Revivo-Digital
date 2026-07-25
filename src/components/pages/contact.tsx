@@ -4,7 +4,6 @@ import { useState } from "react";
 import {
   Mail,
   Clock,
-  MessageCircle,
   ArrowRight,
   Check,
   Shield,
@@ -271,20 +270,6 @@ export function ContactPage({
                           <span>
                             <span className="block text-[11px] text-slate-400 sm:text-xs">Email</span>
                             revivodigitals@gmail.com
-                          </span>
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://wa.me/919876543210"
-                          className="group flex items-center gap-2.5 text-xs text-slate-600 transition-colors hover:text-navy sm:gap-3.5 sm:text-sm"
-                        >
-                          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-emerald-50 text-emerald-600 transition-colors group-hover:bg-emerald-500 group-hover:text-white sm:h-10 sm:w-10">
-                            <MessageCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                          </span>
-                          <span>
-                            <span className="block text-[11px] text-slate-400 sm:text-xs">WhatsApp</span>
-                            Chat on WhatsApp
                           </span>
                         </a>
                       </li>
