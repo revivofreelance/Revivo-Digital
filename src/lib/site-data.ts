@@ -2537,6 +2537,8 @@ export type PosProduct = {
   accent: string; // tailwind gradient classes
   image: string;
   features: string[];
+  /** Real product screens, in demo order — driven by the home-page showcase. */
+  screens: { label: string; src: string }[];
 };
 
 export const POS_PRODUCTS: PosProduct[] = [
@@ -2551,6 +2553,13 @@ export const POS_PRODUCTS: PosProduct[] = [
     accent: "from-sky-500 to-blue-500",
     image: "/pos-media/clinic/03-dashboard.png",
     features: ["Live patient queue", "Consultation cockpit", "Pharmacy & billing", "Recall & follow-ups"],
+    screens: [
+      { label: "Live queue", src: "/pos-media/clinic/02-today-live-queue.png" },
+      { label: "Dashboard", src: "/pos-media/clinic/03-dashboard.png" },
+      { label: "Consultation", src: "/pos-media/clinic/07-consultation-cockpit.png" },
+      { label: "Pharmacy", src: "/pos-media/clinic/09-pharmacy-pos.png" },
+      { label: "Billing", src: "/pos-media/clinic/10-billing.png" },
+    ],
   },
   {
     slug: "restaurant",
@@ -2563,6 +2572,13 @@ export const POS_PRODUCTS: PosProduct[] = [
     accent: "from-amber-500 to-orange-500",
     image: "/pos-media/restaurant/02-dashboard.png",
     features: ["Kitchen display system", "Table & waitlist management", "Menu & inventory", "Real-time reporting"],
+    screens: [
+      { label: "New order", src: "/pos-media/restaurant/01-new-order.png" },
+      { label: "Kitchen display", src: "/pos-media/restaurant/03-kitchen-display.png" },
+      { label: "Tables & floor", src: "/pos-media/restaurant/05-tables-floor.png" },
+      { label: "Waitlist", src: "/pos-media/restaurant/06-waitlist.png" },
+      { label: "Reports", src: "/pos-media/restaurant/04-reports.png" },
+    ],
   },
   {
     slug: "salon",
@@ -2575,5 +2591,12 @@ export const POS_PRODUCTS: PosProduct[] = [
     accent: "from-fuchsia-500 to-purple-500",
     image: "/pos-media/salon/01-dashboard.png",
     features: ["Calendar & booking", "Client memberships", "Commission tracking", "Inventory & reports"],
+    screens: [
+      { label: "Dashboard", src: "/pos-media/salon/01-dashboard.png" },
+      { label: "Calendar", src: "/pos-media/salon/02-calendar.png" },
+      { label: "Checkout", src: "/pos-media/salon/03-pos-checkout.png" },
+      { label: "Clients", src: "/pos-media/salon/04-clients.png" },
+      { label: "Commissions", src: "/pos-media/salon/07-commissions.png" },
+    ],
   },
 ];

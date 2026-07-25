@@ -13,6 +13,7 @@ import {
   ScrollProgress, Spotlight, Tilt, RotatingWord,
 } from "@/components/site/primitives";
 import { CTASection } from "@/components/site/cta-section";
+import { PosShowcase } from "@/components/site/pos-showcase";
 import { PageShell } from "@/components/site/page-shell";
 import {
   MarqueeBanner, Manifesto, ProblemSection,
@@ -57,13 +58,16 @@ export function HomePage({
       {/* ACT 5: The Transformation — show the proof */}
       <FeaturedProjects onNavigate={onNavigate} />
 
-      {/* ACT 6: Why Me — differentiate */}
+      {/* ACT 6: In-house products — the capability proof behind the client work */}
+      <PosShowcase />
+
+      {/* ACT 7: Why Me — differentiate */}
       <WhyChoose />
 
-      {/* ACT 7: Social Proof — testimonials */}
+      {/* ACT 8: Social Proof — testimonials */}
       <TestimonialsPreview onNavigate={onNavigate} />
 
-      {/* ACT 8: The Close — FAQ + CTA */}
+      {/* ACT 9: The Close — FAQ + CTA */}
       <HomeFAQ />
       <CTASection
         onCTA={onCTA}
