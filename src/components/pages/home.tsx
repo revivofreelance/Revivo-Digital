@@ -583,36 +583,34 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
 /* ============================ INDUSTRIES PREVIEW ============================ */
 function IndustriesPreview({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
   const top = INDUSTRIES.slice(0, 8);
-  // Light band: the POS showcase directly above is navy, and the page
-  // alternates light/dark section by section.
   return (
-    <section className="relative overflow-hidden px-4 py-3 sm:px-6 sm:py-10 lg:px-8">
-      <div className="absolute inset-0 bg-grid opacity-40" />
+    <section className="relative overflow-hidden bg-navy px-4 py-3 text-white sm:px-6 sm:py-10 lg:px-8">
+      <div className="absolute inset-0 bg-grid-dark opacity-30" />
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 left-1/4 h-72 w-72 rounded-full bg-grape/10 blur-3xl" />
-        <div className="absolute -bottom-32 right-1/4 h-72 w-72 rounded-full bg-royal/10 blur-3xl" />
+        <div className="absolute -top-32 left-1/4 h-72 w-72 rounded-full bg-grape/30 blur-3xl" />
+        <div className="absolute -bottom-32 right-1/4 h-72 w-72 rounded-full bg-royal/30 blur-3xl" />
       </div>
       <div className="relative mx-auto max-w-7xl">
         <div className="flex flex-col items-start justify-between gap-4 sm:gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
             <Reveal>
-              <div className="inline-flex items-center gap-1.5 rounded-full border border-grape/15 bg-grape/5 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-grape sm:px-3.5 sm:py-1.5 sm:text-xs">
+              <div className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white sm:px-3.5 sm:py-1.5 sm:text-xs">
                 <span className="h-1.5 w-1.5 rounded-full bg-cta animate-pulse" /> Industries I serve
               </div>
             </Reveal>
             <Reveal delay={0.05}>
-              <h2 className="mt-3 text-balance text-xl font-bold tracking-tight text-navy sm:mt-5 sm:text-3xl md:text-5xl">
+              <h2 className="mt-3 text-balance text-xl font-bold tracking-tight sm:mt-5 sm:text-3xl md:text-5xl">
                 I understand <span className="text-gradient-cta">your business</span>, not just your website.
               </h2>
             </Reveal>
             <Reveal delay={0.1}>
-              <p className="mt-2 max-w-xl text-xs text-slate-600 sm:mt-4 sm:text-base">
+              <p className="mt-2 max-w-xl text-xs text-slate-300 sm:mt-4 sm:text-base">
                 16 industries served. I know the problems your customers have, the keywords they search for, and the features that turn them into paying clients.
               </p>
             </Reveal>
           </div>
           <Reveal delay={0.15}>
-            <PremiumButton variant="outline" size="md" onClick={() => onNavigate("industries")} icon={<ArrowRight className="h-4 w-4" />}>
+            <PremiumButton variant="outline" size="md" onClick={() => onNavigate("industries")} icon={<ArrowRight className="h-4 w-4" />} className="border-white/20 bg-white/5 text-white backdrop-blur hover:bg-white/10 hover:border-white/40">
               All 16 industries
             </PremiumButton>
           </Reveal>
@@ -647,15 +645,15 @@ function IndustryPicker({
             className={cn(
               "relative shrink-0 rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors sm:px-4 sm:py-2 sm:text-sm",
               i === active
-                ? "border-transparent text-white"
-                : "border-slate-200 text-slate-600 hover:border-grape/40 hover:text-navy",
+                ? "border-transparent text-navy"
+                : "border-white/15 text-slate-300 hover:border-white/40 hover:text-white",
             )}
           >
             {i === active && (
               <motion.span
                 layoutId="industry-pill"
                 transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                className="absolute inset-0 rounded-full bg-navy"
+                className="absolute inset-0 rounded-full bg-white"
               />
             )}
             <span className="relative z-10 inline-flex items-center gap-1.5">
@@ -667,7 +665,7 @@ function IndustryPicker({
       </div>
 
       {/* Detail panel */}
-      <div className="mt-3 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft sm:mt-5 sm:rounded-3xl">
+      <div className="mt-3 overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur sm:mt-5 sm:rounded-3xl">
         <AnimatePresence mode="wait">
           <motion.div
             key={ind.slug}
@@ -681,14 +679,14 @@ function IndustryPicker({
               <div className={cn("grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br text-white shadow-soft sm:h-14 sm:w-14", ind.accent)}>
                 <ind.icon className="h-5 w-5 sm:h-7 sm:w-7" />
               </div>
-              <h3 className="mt-3 font-display text-lg font-bold text-navy sm:mt-5 sm:text-2xl">{ind.title}</h3>
-              <p className="mt-1.5 text-xs text-slate-600 sm:mt-2 sm:text-base">{ind.tagline}</p>
+              <h3 className="mt-3 font-display text-lg font-bold text-white sm:mt-5 sm:text-2xl">{ind.title}</h3>
+              <p className="mt-1.5 text-xs text-slate-300 sm:mt-2 sm:text-base">{ind.tagline}</p>
 
               <div className="mt-4 grid grid-cols-3 gap-2 sm:mt-6 sm:gap-3">
                 {ind.results.slice(0, 3).map((r) => (
-                  <div key={r.metric} className="rounded-xl border border-slate-200 bg-slate-50 p-2 sm:p-3">
+                  <div key={r.metric} className="rounded-xl border border-white/10 bg-white/5 p-2 sm:p-3">
                     <div className="font-display text-sm font-extrabold text-gradient-cta sm:text-xl">{r.value}</div>
-                    <div className="mt-0.5 text-[11px] leading-tight text-slate-500 sm:text-[11px]">{r.metric}</div>
+                    <div className="mt-0.5 text-[11px] leading-tight text-slate-400 sm:text-[11px]">{r.metric}</div>
                   </div>
                 ))}
               </div>
@@ -704,27 +702,27 @@ function IndustryPicker({
 
             {/* Pain → fix */}
             <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
-              <div className="rounded-xl border border-red-200 bg-red-50 p-3 sm:rounded-2xl sm:p-4">
-                <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-red-600 sm:text-xs">
+              <div className="rounded-xl border border-red-400/20 bg-red-500/5 p-3 sm:rounded-2xl sm:p-4">
+                <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-red-300 sm:text-xs">
                   What&apos;s costing you
                 </div>
                 <ul className="mt-2 space-y-1.5 sm:mt-3 sm:space-y-2.5">
                   {ind.problems.slice(0, 3).map((p) => (
-                    <li key={p} className="flex gap-1.5 text-[11px] leading-snug text-slate-600 sm:text-xs">
-                      <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-red-500" />
+                    <li key={p} className="flex gap-1.5 text-[11px] leading-snug text-slate-300 sm:text-xs">
+                      <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-red-400" />
                       {p}
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 sm:rounded-2xl sm:p-4">
-                <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-700 sm:text-xs">
+              <div className="rounded-xl border border-emerald-400/20 bg-emerald-500/5 p-3 sm:rounded-2xl sm:p-4">
+                <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-300 sm:text-xs">
                   What I build instead
                 </div>
                 <ul className="mt-2 space-y-1.5 sm:mt-3 sm:space-y-2.5">
                   {ind.solutions.slice(0, 3).map((s) => (
-                    <li key={s} className="flex gap-1.5 text-[11px] leading-snug text-slate-600 sm:text-xs">
-                      <Check className="mt-0.5 h-3 w-3 shrink-0 text-emerald-600" />
+                    <li key={s} className="flex gap-1.5 text-[11px] leading-snug text-slate-300 sm:text-xs">
+                      <Check className="mt-0.5 h-3 w-3 shrink-0 text-emerald-400" />
                       {s}
                     </li>
                   ))}
