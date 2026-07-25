@@ -470,17 +470,15 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
             // Bento rhythm: the first card owns a 2×2 block, card 7 runs wide.
             const hero = i === 0;
             const wide = i === 6;
-            // The bento is tuned for the 4-col desktop grid. On the 2-col mobile grid a
-            // mid-list col-span-2 orphans its neighbours into half-empty rows, so drop it
-            // there and instead let the last card fill the row when the tail count is odd.
-            const tail = i === top.length - 1 && (top.length - 1) % 2 === 1;
+            // The bento is tuned for the 4-col desktop grid. On the 2-col mobile grid
+            // every col-span-2 orphans its neighbours into half-empty rows, so drop
+            // them there — 8 equal tiles come out as a clean 4x2 block.
             return (
               <StaggerItem
                 key={s.slug}
                 className={cn(
-                  hero && "col-span-2 lg:row-span-2",
+                  hero && "col-span-2 max-sm:col-span-1 lg:row-span-2",
                   wide && "col-span-2 max-sm:col-span-1",
-                  tail && "max-sm:col-span-2",
                 )}
               >
                 <Spotlight className="h-full overflow-hidden rounded-xl sm:rounded-2xl" size={320}>
@@ -522,12 +520,18 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                       >
                         {s.title}
                       </h3>
+                      {/* Eight blurbs — clamped mid-sentence at this width — plus
+                          eight "Learn more" rows tripled the tile height for copy
+                          nobody reads on a phone. Icon and title carry the grid
+                          there; both are desktop-only. */}
                       <p
                         className={cn(
-                          "mt-0.5 leading-snug sm:mt-1 sm:leading-relaxed",
+                          "mt-0.5 hidden leading-snug sm:mt-1 sm:block sm:leading-relaxed",
                           hero
                             ? "max-w-md text-[11px] text-slate-300 sm:text-base"
-                            : "line-clamp-2 text-[11px] text-slate-400 sm:line-clamp-none sm:text-sm",
+                            // No line-clamp: it set display:-webkit-box and beat the
+                            // `hidden` above. It only ever applied below sm anyway.
+                            : "text-[11px] text-slate-400 sm:text-sm",
                         )}
                       >
                         {s.short}
@@ -578,7 +582,7 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
 
                       <div
                         className={cn(
-                          "mt-1.5 inline-flex items-center gap-1 text-[11px] font-semibold sm:mt-4 sm:text-sm",
+                          "mt-1.5 hidden items-center gap-1 text-[11px] font-semibold sm:mt-4 sm:inline-flex sm:text-sm",
                           hero ? "mt-auto text-cta" : "text-violet-300",
                         )}
                       >

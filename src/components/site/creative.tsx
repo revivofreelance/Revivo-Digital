@@ -82,7 +82,23 @@ export function Manifesto() {
               <span className="h-1.5 w-1.5 rounded-full bg-grape animate-pulse" /> The philosophy
             </div>
           </Reveal>
-          <div className="mt-3 flex flex-wrap gap-x-2 gap-y-1 max-sm:gap-x-1 max-sm:gap-y-1 sm:mt-6 sm:gap-x-2.5">
+          {/* One static block on phones. Word-by-word reveal in a flex row reads
+              as broken text at this width: mid-stagger a word sits dimmed and a
+              step low, and the row gaps space the wrapped lines unevenly. */}
+          <h2 className="mt-2.5 text-balance font-display text-lg font-extrabold leading-tight tracking-tight text-navy sm:hidden">
+            {words.map((word, i) => (
+              <span
+                key={i}
+                className={cn(
+                  (word.includes("salesperson") || word.includes("24/7,") || word.includes("raise.")) &&
+                    "text-gradient-purple",
+                )}
+              >
+                {word}{" "}
+              </span>
+            ))}
+          </h2>
+          <div className="mt-3 hidden flex-wrap gap-x-2 gap-y-1 sm:mt-6 sm:flex sm:gap-x-2.5">
             {words.map((word, i) => (
               <motion.span
                 key={i}
@@ -199,7 +215,9 @@ function ManifestoToggle() {
             {active.verdict}
           </p>
 
-          <ul className="mt-2 space-y-1.5 sm:mt-4 sm:space-y-2.5">
+          {/* Two columns on phones: four one-line promises stacked made the card
+              the tallest thing in the section. sm:block restores the list. */}
+          <ul className="mt-2 grid grid-cols-2 gap-x-2 gap-y-1.5 sm:mt-4 sm:block sm:space-y-2.5">
             {active.points.map((point) => (
               <li
                 key={point}
