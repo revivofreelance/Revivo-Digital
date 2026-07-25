@@ -89,7 +89,10 @@ function Hero({ onNavigate, onCTA }: { onNavigate: (p: PageKey) => void; onCTA: 
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={ref} className="relative min-h-[86vh] overflow-hidden bg-aurora pb-6 pt-16 sm:min-h-screen sm:pb-20 sm:pt-28 lg:pt-36">
+    // max-sm:min-h-0: the phone hero was pinned to 86vh, so tightening the
+    // boxes inside it bought nothing — the section just padded the slack out.
+    // Let it shrink-wrap its content instead.
+    <section ref={ref} className="relative overflow-hidden bg-aurora pb-6 pt-16 max-sm:min-h-0 sm:min-h-screen sm:pb-20 sm:pt-28 lg:pt-36">
       <div className="absolute inset-0 -z-10 bg-grid opacity-50" />
       <AuroraBackground />
 
@@ -101,7 +104,9 @@ function Hero({ onNavigate, onCTA }: { onNavigate: (p: PageKey) => void; onCTA: 
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 rounded-full border border-grape/15 bg-white/70 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-grape backdrop-blur"
+              // At 12px/0.18em this wrapped to two lines and read as a banner
+              // rather than a badge — 10px and tighter tracking keeps it on one.
+              className="inline-flex items-center gap-1.5 rounded-full border border-grape/15 bg-white/70 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-grape backdrop-blur sm:gap-2 sm:px-3.5 sm:py-1.5 sm:text-xs sm:tracking-[0.18em]"
             >
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-grape/60" />
@@ -114,7 +119,7 @@ function Hero({ onNavigate, onCTA }: { onNavigate: (p: PageKey) => void; onCTA: 
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-3 text-balance font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-navy sm:mt-6 sm:text-5xl md:text-6xl lg:text-7xl"
+              className="mt-2.5 text-balance font-display text-[26px] font-extrabold leading-[1.05] tracking-tight text-navy sm:mt-6 sm:text-5xl md:text-6xl lg:text-7xl"
             >
               Build a website that brings you{" "}
               <span className="relative inline-block">
@@ -152,7 +157,9 @@ function Hero({ onNavigate, onCTA }: { onNavigate: (p: PageKey) => void; onCTA: 
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-4 max-w-xl text-pretty text-sm text-slate-600 sm:mt-6 sm:text-lg md:text-xl"
+              // mt-4 not mt-2.5: the headline's underline SVG hangs below its
+              // box, and a tighter margin runs this copy into the stroke.
+              className="mt-4 max-w-xl text-pretty text-[13px] text-slate-600 max-sm:leading-snug sm:mt-6 sm:text-lg md:text-xl"
             >
               Revivo is an independent studio that designs and builds premium websites for local businesses. More leads, more bookings, more calls — not just a prettier homepage.
             </motion.p>
@@ -161,7 +168,7 @@ function Hero({ onNavigate, onCTA }: { onNavigate: (p: PageKey) => void; onCTA: 
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-5 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-3 sm:mt-8"
+              className="mt-3.5 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3 sm:mt-8"
             >
               {/* Magnetic is inline-block, so the button inside it won't stretch like its
                   unwrapped sibling does in the stacked mobile column — match them explicitly. */}
@@ -185,12 +192,12 @@ function Hero({ onNavigate, onCTA }: { onNavigate: (p: PageKey) => void; onCTA: 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.5 }}
-              className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-slate-600 sm:mt-6 sm:gap-x-6 sm:gap-y-3 sm:text-sm"
+              className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[11px] text-slate-600 sm:mt-6 sm:gap-x-6 sm:gap-y-3 sm:text-sm"
             >
               <div className="flex items-center gap-1.5">
                 <div className="flex">
                   {[0,1,2,3,4].map((i) => (
-                    <Star key={i} className="h-4 w-4 fill-cta text-cta" />
+                    <Star key={i} className="h-3.5 w-3.5 fill-cta text-cta sm:h-4 sm:w-4" />
                   ))}
                 </div>
                 <span className="font-semibold text-navy">4.2/5</span>
@@ -198,7 +205,7 @@ function Hero({ onNavigate, onCTA }: { onNavigate: (p: PageKey) => void; onCTA: 
               </div>
               <span className="hidden h-4 w-px bg-slate-300 sm:block" />
               <div className="inline-flex items-center gap-1.5">
-                <ShieldCheck className="h-4 w-4 text-emerald-500" />
+                <ShieldCheck className="h-3.5 w-3.5 text-emerald-500 sm:h-4 sm:w-4" />
                 <span>Fixed-price · You own everything</span>
               </div>
             </motion.div>
@@ -220,14 +227,14 @@ function Hero({ onNavigate, onCTA }: { onNavigate: (p: PageKey) => void; onCTA: 
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6 }}
-          className="mt-5 grid grid-cols-2 gap-2 rounded-xl border border-slate-200 bg-white/70 p-3 backdrop-blur sm:mt-16 sm:grid-cols-4 sm:gap-6 sm:rounded-2xl sm:p-8"
+          className="mt-4 grid grid-cols-2 gap-x-2 gap-y-2 rounded-xl border border-slate-200 bg-white/70 p-2.5 backdrop-blur sm:mt-16 sm:grid-cols-4 sm:gap-6 sm:rounded-2xl sm:p-8"
         >
           {HERO_STATS.map((s) => (
             <div key={s.label} className="text-center">
-              <div className="font-display text-2xl font-extrabold tracking-tight text-navy sm:text-3xl sm:text-4xl">
+              <div className="font-display text-lg font-extrabold tracking-tight text-navy sm:text-4xl">
                 <AnimatedCounter value={s.value} prefix={s.prefix || ""} suffix={s.suffix} decimals={s.value % 1 !== 0 ? 1 : 0} />
               </div>
-              <div className="mt-1 text-xs font-medium text-slate-500 sm:text-sm">{s.label}</div>
+              <div className="mt-0.5 text-[11px] font-medium text-slate-500 max-sm:leading-tight sm:mt-1 sm:text-sm">{s.label}</div>
             </div>
           ))}
         </motion.div>
@@ -248,7 +255,7 @@ function Hero({ onNavigate, onCTA }: { onNavigate: (p: PageKey) => void; onCTA: 
       </motion.div>
 
       {/* Bottom fade */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent max-sm:h-16" />
     </section>
   );
 }
