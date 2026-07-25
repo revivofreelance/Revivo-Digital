@@ -269,7 +269,7 @@ export function ProblemSection() {
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-2 text-pretty text-sm text-slate-300 sm:mt-4 sm:text-base">
+            <p className="mt-1.5 text-pretty text-[13px] text-slate-300 max-sm:leading-snug sm:mt-4 sm:text-base">
               Not because it&apos;s &ldquo;bad&rdquo; — but because it was built to look pretty, not to perform. Six leaks I fix, and what closes each one:
             </p>
           </Reveal>
@@ -292,19 +292,19 @@ export function ProblemSection() {
               return (
                 <li
                   key={p.title}
-                  className="group flex items-start gap-2.5 px-2.5 py-2 transition-colors duration-300 hover:bg-white/[0.05] sm:gap-3.5 sm:px-4 sm:py-3"
+                  className="group flex items-start gap-2 px-2 py-1.5 transition-colors duration-300 hover:bg-white/[0.05] sm:gap-3.5 sm:px-4 sm:py-3"
                 >
                   <span
                     className={cn(
-                      "mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-gradient-to-br text-white shadow-lg transition-transform duration-300 group-hover:scale-110 sm:h-9 sm:w-9",
+                      "mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-lg bg-gradient-to-br text-white shadow-lg transition-transform duration-300 group-hover:scale-110 sm:h-9 sm:w-9",
                       pos ? "from-grape to-royal" : "from-rose-500 to-rose-700",
                     )}
                   >
-                    <p.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                    <p.icon className="h-3 w-3 sm:h-4 sm:w-4" />
                   </span>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-baseline justify-between gap-2">
-                      <h3 className="font-display text-xs font-bold leading-tight text-white sm:text-base">
+                      <h3 className="font-display text-[11px] font-bold leading-tight text-white sm:text-base">
                         {p.title}
                       </h3>
                       {/* The tag is the point: it turns a list of complaints into

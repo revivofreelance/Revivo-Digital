@@ -475,7 +475,7 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                   <button
                     onClick={() => onNavigate("services")}
                     className={cn(
-                      "group relative flex h-full w-full flex-col overflow-hidden rounded-xl border p-2.5 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lift sm:rounded-2xl sm:p-6",
+                      "group relative flex h-full w-full flex-col overflow-hidden rounded-xl border p-2 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lift sm:rounded-2xl sm:p-6",
                       // On the navy band a bg-navy hero card would vanish into the
                       // section, so the hero gets a lit gradient surface and the
                       // siblings a plain glass one.
@@ -491,11 +491,11 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                         className={cn(
                           "grid place-items-center rounded-lg text-white shadow-soft transition-transform duration-300 group-hover:scale-110 sm:rounded-xl",
                           hero
-                            ? "h-10 w-10 bg-cta-gradient sm:h-14 sm:w-14"
-                            : "h-8 w-8 bg-gradient-to-br from-grape to-royal sm:h-11 sm:w-11",
+                            ? "h-9 w-9 bg-cta-gradient sm:h-14 sm:w-14"
+                            : "h-7 w-7 bg-gradient-to-br from-grape to-royal sm:h-11 sm:w-11",
                         )}
                       >
-                        <s.icon className={cn("h-4 w-4", hero ? "sm:h-7 sm:w-7" : "sm:h-5 sm:w-5")} />
+                        <s.icon className={cn("h-3.5 w-3.5", hero ? "sm:h-7 sm:w-7" : "sm:h-5 sm:w-5")} />
                       </div>
                       <div className="mt-1.5 hidden items-center gap-2 sm:flex">
                         <span className={cn("text-[10px] font-bold uppercase tracking-wider", hero ? "text-cta" : "text-violet-300")}>
@@ -505,7 +505,7 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                       <h3
                         className={cn(
                           "mt-1 font-display font-bold leading-tight",
-                          hero ? "text-sm text-white sm:text-3xl" : "text-xs text-white sm:text-lg",
+                          hero ? "text-[13px] text-white sm:text-3xl" : "text-[11px] text-white sm:text-lg",
                         )}
                       >
                         {s.title}
@@ -566,7 +566,7 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
 
                       <div
                         className={cn(
-                          "mt-2 inline-flex items-center gap-1 text-[11px] font-semibold sm:mt-4 sm:text-sm",
+                          "mt-1.5 inline-flex items-center gap-1 text-[11px] font-semibold sm:mt-4 sm:text-sm",
                           hero ? "mt-auto text-cta" : "text-violet-300",
                         )}
                       >
@@ -678,27 +678,31 @@ function IndustryPicker({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="grid gap-4 p-4 sm:gap-8 sm:p-8 lg:grid-cols-[1fr_1.1fr]"
+            className="grid gap-2.5 p-2.5 sm:gap-8 sm:p-8 lg:grid-cols-[1fr_1.1fr]"
           >
             <div>
-              <div className={cn("grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br text-white shadow-soft sm:h-14 sm:w-14", ind.accent)}>
-                <ind.icon className="h-5 w-5 sm:h-7 sm:w-7" />
+              {/* The icon and title sit on one line on phones — stacked they cost
+                  a whole row for a 44px glyph. */}
+              <div className="flex items-center gap-2 sm:block">
+                <div className={cn("grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-gradient-to-br text-white shadow-soft sm:h-14 sm:w-14 sm:rounded-xl", ind.accent)}>
+                  <ind.icon className="h-4 w-4 sm:h-7 sm:w-7" />
+                </div>
+                <h3 className="font-display text-base font-bold text-white sm:mt-5 sm:text-2xl">{ind.title}</h3>
               </div>
-              <h3 className="mt-3 font-display text-lg font-bold text-white sm:mt-5 sm:text-2xl">{ind.title}</h3>
-              <p className="mt-1.5 text-xs text-slate-300 sm:mt-2 sm:text-base">{ind.tagline}</p>
+              <p className="mt-1 text-[11px] text-slate-300 max-sm:leading-snug sm:mt-2 sm:text-base">{ind.tagline}</p>
 
-              <div className="mt-4 grid grid-cols-3 gap-2 sm:mt-6 sm:gap-3">
+              <div className="mt-2 grid grid-cols-3 gap-1.5 sm:mt-6 sm:gap-3">
                 {ind.results.slice(0, 3).map((r) => (
-                  <div key={r.metric} className="rounded-xl border border-white/10 bg-white/5 p-2 sm:p-3">
-                    <div className="font-display text-sm font-extrabold text-gradient-cta sm:text-xl">{r.value}</div>
-                    <div className="mt-0.5 text-[11px] leading-tight text-slate-400 sm:text-[11px]">{r.metric}</div>
+                  <div key={r.metric} className="rounded-lg border border-white/10 bg-white/5 p-1.5 sm:rounded-xl sm:p-3">
+                    <div className="font-display text-[13px] font-extrabold text-gradient-cta sm:text-xl">{r.value}</div>
+                    <div className="mt-0.5 text-[10px] leading-tight text-slate-400 sm:text-[11px]">{r.metric}</div>
                   </div>
                 ))}
               </div>
 
               <button
                 onClick={() => onNavigate("industries")}
-                className="group mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-cta max-sm:py-2 sm:mt-6 sm:text-sm"
+                className="group mt-2 inline-flex items-center gap-1.5 text-[11px] font-semibold text-cta max-sm:py-2 sm:mt-6 sm:text-sm"
               >
                 See the full {ind.title.toLowerCase()} playbook
                 <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
@@ -706,12 +710,14 @@ function IndustryPicker({
             </div>
 
             {/* Pain → fix */}
-            <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
-              <div className="rounded-xl border border-red-400/20 bg-red-500/5 p-3 sm:rounded-2xl sm:p-4">
-                <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-red-300 sm:text-xs">
+            {/* Pain and fix read as a before/after pair, so they go side by side
+                on phones too rather than stacking into two more scroll-lengths. */}
+            <div className="grid grid-cols-2 gap-1.5 sm:gap-4">
+              <div className="rounded-lg border border-red-400/20 bg-red-500/5 p-2 sm:rounded-2xl sm:p-4">
+                <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-red-300 sm:text-xs sm:tracking-[0.16em]">
                   What&apos;s costing you
                 </div>
-                <ul className="mt-2 space-y-1.5 sm:mt-3 sm:space-y-2.5">
+                <ul className="mt-1.5 space-y-1 sm:mt-3 sm:space-y-2.5">
                   {ind.problems.slice(0, 3).map((p) => (
                     <li key={p} className="flex gap-1.5 text-[11px] leading-snug text-slate-300 sm:text-xs">
                       <span className="mt-1 h-1 w-1 shrink-0 rounded-full bg-red-400" />
@@ -720,14 +726,14 @@ function IndustryPicker({
                   ))}
                 </ul>
               </div>
-              <div className="rounded-xl border border-emerald-400/20 bg-emerald-500/5 p-3 sm:rounded-2xl sm:p-4">
-                <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-emerald-300 sm:text-xs">
+              <div className="rounded-lg border border-emerald-400/20 bg-emerald-500/5 p-2 sm:rounded-2xl sm:p-4">
+                <div className="text-[10px] font-bold uppercase tracking-[0.14em] text-emerald-300 sm:text-xs sm:tracking-[0.16em]">
                   What I build instead
                 </div>
-                <ul className="mt-2 space-y-1.5 sm:mt-3 sm:space-y-2.5">
+                <ul className="mt-1.5 space-y-1 sm:mt-3 sm:space-y-2.5">
                   {ind.solutions.slice(0, 3).map((s) => (
                     <li key={s} className="flex gap-1.5 text-[11px] leading-snug text-slate-300 sm:text-xs">
-                      <Check className="mt-0.5 h-3 w-3 shrink-0 text-emerald-400" />
+                      <Check className="mt-0.5 h-2.5 w-2.5 shrink-0 text-emerald-400 sm:h-3 sm:w-3" />
                       {s}
                     </li>
                   ))}
@@ -757,16 +763,18 @@ function WhyChoose() {
         <Stagger className="grid grid-cols-2 gap-2 sm:gap-5 lg:grid-cols-3" stagger={0.07}>
           {WHY_CHOOSE.map((w, i) => (
             <StaggerItem key={w.title}>
-              <div className="group relative h-full overflow-hidden rounded-xl border border-white/10 bg-white/5 p-2.5 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-grape/40 hover:bg-white/10 hover:shadow-lift sm:rounded-2xl sm:p-7">
-                <div className="absolute right-2 top-2 font-display text-2xl font-extrabold text-white/5 transition-colors group-hover:text-grape/20 sm:right-4 sm:top-4 sm:text-5xl">
+              <div className="group relative h-full overflow-hidden rounded-xl border border-white/10 bg-white/5 p-2 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-grape/40 hover:bg-white/10 hover:shadow-lift sm:rounded-2xl sm:p-7">
+                <div className="absolute right-1.5 top-1.5 font-display text-lg font-extrabold text-white/5 transition-colors group-hover:text-grape/20 sm:right-4 sm:top-4 sm:text-5xl">
                   0{i + 1}
                 </div>
                 <div className="relative">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-grape/30 to-royal/30 text-violet-200 ring-1 ring-grape/30 transition-transform duration-300 group-hover:scale-110 sm:h-12 sm:w-12 sm:rounded-xl">
-                    <w.icon className="h-4 w-4 sm:h-6 sm:w-6" />
+                  <div className="grid h-7 w-7 place-items-center rounded-lg bg-gradient-to-br from-grape/30 to-royal/30 text-violet-200 ring-1 ring-grape/30 transition-transform duration-300 group-hover:scale-110 sm:h-12 sm:w-12 sm:rounded-xl">
+                    <w.icon className="h-3.5 w-3.5 sm:h-6 sm:w-6" />
                   </div>
-                  <h3 className="mt-2 font-display text-xs font-bold leading-tight text-white sm:mt-5 sm:text-lg">{w.title}</h3>
-                  <p className="mt-0.5 text-[11px] leading-snug text-slate-400 sm:mt-1 sm:text-sm sm:leading-relaxed">{w.description}</p>
+                  <h3 className="mt-1.5 font-display text-[11px] font-bold leading-tight text-white sm:mt-5 sm:text-lg">{w.title}</h3>
+                  {/* Full copy on desktop; on a 2-col phone grid these run 8 lines
+                      each, so clamp to the gist and let the /about page carry it. */}
+                  <p className="mt-0.5 line-clamp-4 text-[11px] leading-snug text-slate-400 sm:mt-1 sm:line-clamp-none sm:text-sm sm:leading-relaxed">{w.description}</p>
                 </div>
               </div>
             </StaggerItem>

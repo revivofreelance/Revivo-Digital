@@ -339,7 +339,7 @@ export function Eyebrow({
   className?: string;
 }) {
   return (
-    <div className={cn("inline-flex items-center gap-2 rounded-full border border-grape/15 bg-grape/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-grape", className)}>
+    <div className={cn("inline-flex items-center gap-1.5 rounded-full border border-grape/15 bg-grape/5 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-grape sm:gap-2 sm:px-3.5 sm:py-1.5 sm:text-xs sm:tracking-[0.18em]", className)}>
       <span className="h-1.5 w-1.5 rounded-full bg-grape animate-pulse" />
       {children}
     </div>
@@ -369,14 +369,16 @@ export function SectionHeading({
           <Eyebrow className={center ? "mx-auto max-sm:mx-0" : ""}>{eyebrow}</Eyebrow>
         </Reveal>
       )}
+      {/* Mobile type is a size down from desktop's: every section pays for this
+          heading, so ~40px saved here is ~400px off the phone page. */}
       <Reveal delay={0.05}>
-        <h2 className="mt-2 text-balance text-2xl font-bold tracking-tight text-navy sm:mt-3 sm:text-4xl md:text-5xl">
+        <h2 className="mt-1.5 text-balance text-xl font-bold tracking-tight text-navy max-sm:leading-[1.15] sm:mt-3 sm:text-4xl md:text-5xl">
           {title}
         </h2>
       </Reveal>
       {subtitle && (
         <Reveal delay={0.1}>
-          <p className={cn("mt-2 text-pretty text-sm text-slate-600 sm:mt-3 sm:text-lg", center && "mx-auto max-sm:mx-0")}>
+          <p className={cn("mt-1.5 text-pretty text-[13px] text-slate-600 max-sm:leading-snug sm:mt-3 sm:text-lg", center && "mx-auto max-sm:mx-0")}>
             {subtitle}
           </p>
         </Reveal>
