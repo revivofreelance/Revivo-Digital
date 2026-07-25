@@ -53,21 +53,22 @@ export function HomePage({
 
       {/* ACT 4: The Solution — services & industries */}
       <ServicesOverview onNavigate={onNavigate} />
+
+      {/* In-house products — the capability proof behind the service list */}
+      <PosShowcase />
+
       <IndustriesPreview onNavigate={onNavigate} />
 
       {/* ACT 5: The Transformation — show the proof */}
       <FeaturedProjects onNavigate={onNavigate} />
 
-      {/* ACT 6: In-house products — the capability proof behind the client work */}
-      <PosShowcase />
-
-      {/* ACT 7: Why Me — differentiate */}
+      {/* ACT 6: Why Me — differentiate */}
       <WhyChoose />
 
-      {/* ACT 8: Social Proof — testimonials */}
+      {/* ACT 7: Social Proof — testimonials */}
       <TestimonialsPreview onNavigate={onNavigate} />
 
-      {/* ACT 9: The Close — FAQ + CTA */}
+      {/* ACT 8: The Close — FAQ + CTA */}
       <HomeFAQ />
       <CTASection
         onCTA={onCTA}
