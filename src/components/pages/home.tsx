@@ -425,6 +425,14 @@ function TrustedBy() {
 }
 
 /* ============================ SERVICES OVERVIEW ============================ */
+// Illustrative funnel for the hero tile's mock browser — a picture of what the
+// card promises ("turns visitors into paying customers"), not client figures.
+const HERO_FUNNEL = [
+  { label: "Visitors", value: "1,240", w: "w-full" },
+  { label: "Enquiries", value: "168", w: "w-[62%]" },
+  { label: "Booked jobs", value: "94", w: "w-[34%]" },
+] as const;
+
 function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
   const top = SERVICES.slice(0, 8);
   return (
@@ -507,6 +515,50 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                       >
                         {s.short}
                       </p>
+
+                      {/* The hero tile owns a 2×2 block, which leaves ~400px of dead
+                          space below the copy at lg. Fill it with a mock of the site
+                          the card is selling. Desktop-only: on mobile the tile is
+                          short already and filler would just re-bloat it. */}
+                      {hero && (
+                        <div aria-hidden className="mt-6 hidden lg:block">
+                          <div className="overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] backdrop-blur transition-colors duration-500 group-hover:border-grape/30">
+                            <div className="flex items-center gap-1.5 border-b border-white/10 bg-white/5 px-3 py-2.5">
+                              <span className="h-2 w-2 rounded-full bg-white/20" />
+                              <span className="h-2 w-2 rounded-full bg-white/20" />
+                              <span className="h-2 w-2 rounded-full bg-white/20" />
+                              <span className="mx-auto inline-flex items-center gap-1.5 rounded-md bg-white/5 px-2.5 py-0.5 text-[10px] font-medium text-slate-400 ring-1 ring-white/10">
+                                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                                yourbusiness.com
+                              </span>
+                              <span className="w-10" />
+                            </div>
+                            <div className="space-y-3.5 px-4 py-4">
+                              {HERO_FUNNEL.map((f) => (
+                                <div key={f.label}>
+                                  <div className="flex items-baseline justify-between">
+                                    <span className="text-[11px] font-medium text-slate-400">{f.label}</span>
+                                    <span className="font-display text-sm font-bold text-white">{f.value}</span>
+                                  </div>
+                                  <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-white/10">
+                                    <div
+                                      className={cn(
+                                        "h-full rounded-full bg-cta-gradient transition-transform duration-700 ease-out",
+                                        f.w,
+                                      )}
+                                    />
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="flex items-center gap-1.5 border-t border-white/10 bg-white/[0.03] px-4 py-2.5 text-[11px] text-slate-400">
+                              <TrendingUp className="h-3.5 w-3.5 text-cta" />
+                              Every page built around one job: the next enquiry.
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
                       <div
                         className={cn(
                           "mt-2 inline-flex items-center gap-1 text-[11px] font-semibold sm:mt-4 sm:text-sm",
