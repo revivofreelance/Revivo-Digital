@@ -520,18 +520,12 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                       >
                         {s.title}
                       </h3>
-                      {/* Eight blurbs — clamped mid-sentence at this width — plus
-                          eight "Learn more" rows tripled the tile height for copy
-                          nobody reads on a phone. Icon and title carry the grid
-                          there; both are desktop-only. */}
                       <p
                         className={cn(
-                          "mt-0.5 hidden leading-snug sm:mt-1 sm:block sm:leading-relaxed",
+                          "mt-0.5 leading-snug sm:mt-1 sm:leading-relaxed",
                           hero
                             ? "max-w-md text-[11px] text-slate-300 sm:text-base"
-                            // No line-clamp: it set display:-webkit-box and beat the
-                            // `hidden` above. It only ever applied below sm anyway.
-                            : "text-[11px] text-slate-400 sm:text-sm",
+                            : "line-clamp-2 text-[11px] text-slate-400 sm:line-clamp-none sm:text-sm",
                         )}
                       >
                         {s.short}
