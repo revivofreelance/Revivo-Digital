@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import {
   ArrowRight, ArrowUpRight, Sparkles, Zap, TrendingUp, X, Check,
@@ -72,14 +72,17 @@ export function Manifesto() {
   return (
     <section ref={ref} className="relative overflow-hidden bg-white px-4 py-3 sm:px-6 sm:py-10 lg:px-8">
       <div className="absolute inset-0 -z-10 bg-aurora-soft" />
-      <div className="mx-auto max-w-5xl">
+      {/* The claim is a comparison, so let the visitor flip it themselves — the
+          headline shrinks a step to make room, which also stops it running to
+          four full-width lines at lg. */}
+      <div className="relative mx-auto grid max-w-6xl gap-4 sm:gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <motion.div style={{ opacity }}>
           <Reveal>
             <div className="inline-flex items-center gap-2 rounded-full border border-grape/15 bg-grape/5 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-grape">
               <span className="h-1.5 w-1.5 rounded-full bg-grape animate-pulse" /> The philosophy
             </div>
           </Reveal>
-          <div className="mt-5 flex flex-wrap gap-x-3 gap-y-2 max-sm:gap-x-1 max-sm:gap-y-1 sm:mt-8">
+          <div className="mt-3 flex flex-wrap gap-x-2 gap-y-1 max-sm:gap-x-1 max-sm:gap-y-1 sm:mt-6 sm:gap-x-2.5">
             {words.map((word, i) => (
               <motion.span
                 key={i}
@@ -88,7 +91,7 @@ export function Manifesto() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
                 className={cn(
-                  "font-display text-base font-extrabold tracking-tight max-sm:text-lg sm:text-4xl md:text-5xl lg:text-6xl",
+                  "font-display text-base font-extrabold tracking-tight max-sm:text-lg sm:text-3xl md:text-4xl",
                   word.includes("salesperson") || word.includes("24/7,") || word.includes("raise.")
                     ? "text-gradient-purple"
                     : "text-navy"
@@ -99,13 +102,131 @@ export function Manifesto() {
             ))}
           </div>
           <Reveal delay={0.3}>
-            <p className="mt-4 max-w-2xl text-pretty text-xs text-slate-600 sm:mt-10 sm:text-lg sm:text-xl">
+            <p className="mt-2.5 max-w-2xl text-pretty text-xs text-slate-600 sm:mt-5 sm:text-base">
               Most freelancers build websites. I build <span className="font-semibold text-navy">business assets</span> — engineered to bring you more calls, more bookings, and more revenue. Every pixel, every line of code, every word of copy serves one purpose: <span className="font-semibold text-grape">growing your business.</span>
             </p>
           </Reveal>
         </motion.div>
+
+        <Reveal delay={0.15}>
+          <ManifestoToggle />
+        </Reveal>
       </div>
     </section>
+  );
+}
+
+/* The two modes are written in parallel so flipping the switch swaps the same
+   four promises — that contrast is the whole argument of the section. */
+const MANIFESTO_MODES = {
+  brochure: {
+    label: "A brochure",
+    verdict: "Looks nice. Does nothing.",
+    points: [
+      "Tells people you exist",
+      "Waits around to be found",
+      "Sends visitors off to “think about it”",
+      "Judged on compliments",
+    ],
+  },
+  asset: {
+    label: "A business asset",
+    verdict: "Sells while you sleep.",
+    points: [
+      "Ranks for what you actually sell",
+      "Books the appointment on the spot",
+      "Follows up so nobody goes cold",
+      "Judged on revenue",
+    ],
+  },
+} as const;
+
+function ManifestoToggle() {
+  const [mode, setMode] = useState<"brochure" | "asset">("asset");
+  const active = MANIFESTO_MODES[mode];
+  const isAsset = mode === "asset";
+
+  return (
+    <div
+      className={cn(
+        "rounded-2xl border p-2.5 shadow-soft transition-colors duration-500 sm:rounded-3xl sm:p-6",
+        isAsset ? "border-grape/20 bg-white" : "border-dashed border-slate-300 bg-slate-50",
+      )}
+    >
+      {/* Switch. layoutId lets framer slide the pill between the two options. */}
+      <div className="inline-flex rounded-full border border-slate-200 bg-slate-100/80 p-1">
+        {(["brochure", "asset"] as const).map((key) => (
+          <button
+            key={key}
+            onClick={() => setMode(key)}
+            aria-pressed={mode === key}
+            className={cn(
+              "relative rounded-full px-2.5 py-2 text-[11px] font-semibold transition-colors duration-300 sm:px-4 sm:text-xs",
+              mode === key ? "text-white" : "text-slate-500 hover:text-navy",
+            )}
+          >
+            {mode === key && (
+              <motion.span
+                layoutId="manifesto-switch"
+                transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                // Not -z-10: that would drop the pill behind the track's own
+                // background and leave the active label white-on-light.
+                className={cn(
+                  "absolute inset-0 rounded-full",
+                  key === "asset" ? "bg-gradient-to-r from-grape to-royal" : "bg-slate-400",
+                )}
+              />
+            )}
+            <span className="relative z-10">{MANIFESTO_MODES[key].label}</span>
+          </button>
+        ))}
+      </div>
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={mode}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <p
+            className={cn(
+              "mt-2.5 font-display text-sm font-bold sm:mt-5 sm:text-2xl",
+              isAsset ? "text-gradient-purple" : "text-slate-400",
+            )}
+          >
+            {active.verdict}
+          </p>
+
+          <ul className="mt-2 space-y-1.5 sm:mt-4 sm:space-y-2.5">
+            {active.points.map((point) => (
+              <li
+                key={point}
+                className={cn(
+                  "flex items-start gap-2 text-[11px] sm:gap-2.5 sm:text-sm",
+                  isAsset ? "text-navy" : "text-slate-400 line-through decoration-slate-300",
+                )}
+              >
+                <span
+                  className={cn(
+                    "mt-px grid h-4 w-4 flex-none place-items-center rounded-full sm:h-5 sm:w-5",
+                    isAsset ? "bg-grape/10 text-grape" : "bg-slate-200 text-slate-400",
+                  )}
+                >
+                  {isAsset ? <Check className="h-2.5 w-2.5" /> : <X className="h-2.5 w-2.5" />}
+                </span>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+      </AnimatePresence>
+
+      <p className="mt-2.5 text-[10px] font-medium uppercase tracking-wider text-slate-400 sm:mt-5 sm:text-[11px]">
+        {isAsset ? "This is what I build." : "Flip the switch — this isn’t what I build."}
+      </p>
+    </div>
   );
 }
 
