@@ -436,16 +436,18 @@ const HERO_FUNNEL = [
 function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
   const top = SERVICES.slice(0, 8);
   return (
-    <section className="relative px-4 py-3 sm:px-6 sm:py-10 lg:px-8">
-      <div className="mx-auto max-w-7xl">
+    <section className="relative overflow-hidden bg-navy px-4 py-3 text-white sm:px-6 sm:py-10 lg:px-8">
+      <div className="absolute inset-0 bg-grid-dark opacity-30" />
+      <div className="relative mx-auto max-w-7xl">
         <div className="flex flex-col items-start justify-between gap-3 sm:gap-6 md:flex-row md:items-end">
           <SectionHeading
             eyebrow="What I do"
             title={<>Everything your business needs <span className="text-gradient-purple">to win online.</span></>}
             subtitle="From a premium business website to booking systems, SEO, and ongoing growth — one partner, end-to-end."
+            className="[&_h2]:text-white [&_p]:text-slate-300"
           />
           <Reveal delay={0.1}>
-            <PremiumButton variant="outline" size="md" onClick={() => onNavigate("services")} icon={<ArrowRight className="h-4 w-4" />}>
+            <PremiumButton variant="outline" size="md" onClick={() => onNavigate("services")} icon={<ArrowRight className="h-4 w-4" />} className="border-white/20 bg-white/5 text-white backdrop-blur hover:border-white/40 hover:bg-white/10">
               All 14 services
             </PremiumButton>
           </Reveal>
@@ -474,9 +476,12 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                     onClick={() => onNavigate("services")}
                     className={cn(
                       "group relative flex h-full w-full flex-col overflow-hidden rounded-xl border p-2.5 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lift sm:rounded-2xl sm:p-6",
+                      // On the navy band a bg-navy hero card would vanish into the
+                      // section, so the hero gets a lit gradient surface and the
+                      // siblings a plain glass one.
                       hero
-                        ? "border-transparent bg-navy text-white hover:border-grape/40"
-                        : "border-slate-200 bg-white hover:border-grape/30",
+                        ? "border-grape/30 bg-gradient-to-br from-grape/25 via-royal/20 to-transparent text-white hover:border-grape/60"
+                        : "border-white/10 bg-white/5 text-white backdrop-blur hover:border-grape/40 hover:bg-white/10",
                     )}
                   >
                     {hero && <div className="absolute inset-0 bg-grid-dark opacity-40" />}
@@ -487,20 +492,20 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                           "grid place-items-center rounded-lg text-white shadow-soft transition-transform duration-300 group-hover:scale-110 sm:rounded-xl",
                           hero
                             ? "h-10 w-10 bg-cta-gradient sm:h-14 sm:w-14"
-                            : "h-8 w-8 bg-gradient-to-br from-navy to-royal sm:h-11 sm:w-11",
+                            : "h-8 w-8 bg-gradient-to-br from-grape to-royal sm:h-11 sm:w-11",
                         )}
                       >
                         <s.icon className={cn("h-4 w-4", hero ? "sm:h-7 sm:w-7" : "sm:h-5 sm:w-5")} />
                       </div>
                       <div className="mt-1.5 hidden items-center gap-2 sm:flex">
-                        <span className={cn("text-[10px] font-bold uppercase tracking-wider", hero ? "text-cta" : "text-grape")}>
+                        <span className={cn("text-[10px] font-bold uppercase tracking-wider", hero ? "text-cta" : "text-violet-300")}>
                           {s.category}
                         </span>
                       </div>
                       <h3
                         className={cn(
                           "mt-1 font-display font-bold leading-tight",
-                          hero ? "text-sm text-white sm:text-3xl" : "text-xs text-navy sm:text-lg",
+                          hero ? "text-sm text-white sm:text-3xl" : "text-xs text-white sm:text-lg",
                         )}
                       >
                         {s.title}
@@ -510,7 +515,7 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                           "mt-0.5 leading-snug sm:mt-1 sm:leading-relaxed",
                           hero
                             ? "max-w-md text-[11px] text-slate-300 sm:text-base"
-                            : "line-clamp-2 text-[11px] text-slate-600 sm:line-clamp-none sm:text-sm",
+                            : "line-clamp-2 text-[11px] text-slate-400 sm:line-clamp-none sm:text-sm",
                         )}
                       >
                         {s.short}
@@ -562,7 +567,7 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                       <div
                         className={cn(
                           "mt-2 inline-flex items-center gap-1 text-[11px] font-semibold sm:mt-4 sm:text-sm",
-                          hero ? "mt-auto text-cta" : "text-grape",
+                          hero ? "mt-auto text-cta" : "text-violet-300",
                         )}
                       >
                         Learn more
@@ -739,27 +744,29 @@ function IndustryPicker({
 /* ============================ WHY CHOOSE ============================ */
 function WhyChoose() {
   return (
-    <section className="relative px-4 py-3 sm:px-6 sm:py-10 lg:px-8">
-      <div className="mx-auto max-w-7xl">
+    <section className="relative overflow-hidden bg-navy px-4 py-3 text-white sm:px-6 sm:py-10 lg:px-8">
+      <div className="absolute inset-0 bg-grid-dark opacity-30" />
+      <div className="relative mx-auto max-w-7xl">
         <SectionHeading
           center
           eyebrow="Why work with me"
           title={<>The difference between a website and a <span className="text-gradient-purple">business asset.</span></>}
           subtitle="Six things you get working with me that you won't find at an agency or on Upwork."
+          className="[&_h2]:text-white [&_p]:text-slate-300"
         />
         <Stagger className="grid grid-cols-2 gap-2 sm:gap-5 lg:grid-cols-3" stagger={0.07}>
           {WHY_CHOOSE.map((w, i) => (
             <StaggerItem key={w.title}>
-              <div className="group relative h-full overflow-hidden rounded-xl border border-slate-200 bg-white p-2.5 transition-all duration-300 hover:-translate-y-1 hover:border-grape/30 hover:shadow-lift sm:rounded-2xl sm:p-7">
-                <div className="absolute right-2 top-2 font-display text-2xl font-extrabold text-slate-100 transition-colors group-hover:text-grape/10 sm:right-4 sm:top-4 sm:text-5xl">
+              <div className="group relative h-full overflow-hidden rounded-xl border border-white/10 bg-white/5 p-2.5 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-grape/40 hover:bg-white/10 hover:shadow-lift sm:rounded-2xl sm:p-7">
+                <div className="absolute right-2 top-2 font-display text-2xl font-extrabold text-white/5 transition-colors group-hover:text-grape/20 sm:right-4 sm:top-4 sm:text-5xl">
                   0{i + 1}
                 </div>
                 <div className="relative">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-grape/10 to-royal/10 text-grape ring-1 ring-grape/15 transition-transform duration-300 group-hover:scale-110 sm:h-12 sm:w-12 sm:rounded-xl">
+                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-grape/30 to-royal/30 text-violet-200 ring-1 ring-grape/30 transition-transform duration-300 group-hover:scale-110 sm:h-12 sm:w-12 sm:rounded-xl">
                     <w.icon className="h-4 w-4 sm:h-6 sm:w-6" />
                   </div>
-                  <h3 className="mt-2 font-display text-xs font-bold leading-tight text-navy sm:mt-5 sm:text-lg">{w.title}</h3>
-                  <p className="mt-0.5 text-[11px] leading-snug text-slate-600 sm:mt-1 sm:text-sm sm:leading-relaxed">{w.description}</p>
+                  <h3 className="mt-2 font-display text-xs font-bold leading-tight text-white sm:mt-5 sm:text-lg">{w.title}</h3>
+                  <p className="mt-0.5 text-[11px] leading-snug text-slate-400 sm:mt-1 sm:text-sm sm:leading-relaxed">{w.description}</p>
                 </div>
               </div>
             </StaggerItem>

@@ -54,11 +54,10 @@ export function PosShowcase() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-navy px-4 py-3 text-white sm:px-6 sm:py-10 lg:px-8">
-      <div className="absolute inset-0 bg-grid-dark opacity-30" />
+    <section className="relative overflow-hidden px-4 py-3 sm:px-6 sm:py-10 lg:px-8">
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-24 top-1/3 h-72 w-72 rounded-full bg-grape/20 blur-3xl"
+        className="pointer-events-none absolute -right-24 top-1/3 h-72 w-72 rounded-full bg-grape/10 blur-3xl"
       />
 
       <div ref={ref} className="relative mx-auto max-w-7xl">
@@ -71,7 +70,6 @@ export function PosShowcase() {
             </>
           }
           subtitle="Three complete point-of-sale platforms, designed and built in-house. Every screen below is a real product — click through them."
-          className="[&_h2]:text-white [&_p]:text-slate-300"
         />
 
         {/* ---- Level 1: product switcher ---- */}
@@ -99,8 +97,8 @@ export function PosShowcase() {
                     // desktop widths flex-1 balloons each pill to ~420px.
                     "group inline-flex items-center justify-center gap-1 whitespace-nowrap rounded-full border px-1.5 py-2.5 text-[11px] font-semibold transition-all duration-300 max-sm:flex-1 sm:gap-2 sm:px-5 sm:py-3 sm:text-sm",
                     active
-                      ? "border-transparent bg-white text-navy shadow-lift"
-                      : "border-white/15 bg-white/5 text-slate-300 hover:border-white/30 hover:text-white",
+                      ? "border-transparent bg-navy text-white shadow-lift"
+                      : "border-slate-200 bg-white text-slate-600 hover:border-grape/40 hover:text-navy",
                   )}
                 >
                   <span
@@ -196,14 +194,14 @@ export function PosShowcase() {
 
           {/* ---- Product detail ---- */}
           <Reveal delay={0.16}>
-            <div className="rounded-xl border border-white/10 bg-white/5 p-3 backdrop-blur sm:rounded-2xl sm:p-6">
-              <h3 className="font-display text-base font-bold text-white sm:text-2xl">
+            <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-soft sm:rounded-2xl sm:p-6">
+              <h3 className="font-display text-base font-bold text-navy sm:text-2xl">
                 {product.name}
               </h3>
               <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-grape sm:mt-1 sm:text-sm">
                 {product.tagline}
               </p>
-              <p className="mt-2 text-pretty text-[11px] leading-relaxed text-slate-300 sm:mt-3 sm:text-sm">
+              <p className="mt-2 text-pretty text-[11px] leading-relaxed text-slate-600 sm:mt-3 sm:text-sm">
                 {product.description}
               </p>
 
@@ -211,9 +209,9 @@ export function PosShowcase() {
                 {product.features.map((f) => (
                   <li
                     key={f}
-                    className="flex items-start gap-1.5 text-[11px] text-slate-200 sm:items-center sm:gap-2 sm:text-sm"
+                    className="flex items-start gap-1.5 text-[11px] text-slate-700 sm:items-center sm:gap-2 sm:text-sm"
                   >
-                    <span className="mt-0.5 inline-flex h-3.5 w-3.5 flex-none items-center justify-center rounded-full bg-grape/20 text-grape sm:mt-0 sm:h-4 sm:w-4">
+                    <span className="mt-0.5 inline-flex h-3.5 w-3.5 flex-none items-center justify-center rounded-full bg-grape/10 text-grape sm:mt-0 sm:h-4 sm:w-4">
                       <Check className="h-2 w-2 sm:h-2.5 sm:w-2.5" />
                     </span>
                     {f}
@@ -225,7 +223,7 @@ export function PosShowcase() {
                 href={product.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 text-[11px] font-semibold text-navy transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-100 max-sm:w-full sm:mt-6 sm:px-5 sm:py-3 sm:text-sm"
+                className="group mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-navy px-4 py-2.5 text-[11px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-royal max-sm:w-full sm:mt-6 sm:px-5 sm:py-3 sm:text-sm"
               >
                 Explore the full {product.name} page
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
