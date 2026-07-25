@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import {
   ArrowRight, ArrowUpRight, Sparkles, Zap, TrendingUp, X, Check,
-  Star, MousePointerClick, Eye, Phone, Calendar, AlertCircle,
+  Star, MousePointerClick, Eye, Phone, Calendar, AlertCircle, Receipt,
   Search, PenTool, Layout, Code, Bug, Rocket, GraduationCap, LifeBuoy,
   ChevronLeft, ChevronRight, Clock, Target, Lightbulb,
 } from "lucide-react";
@@ -113,11 +113,15 @@ export function Manifesto() {
    3. PROBLEM SECTION — "Most websites are broken" provocation
    ============================================================ */
 export function ProblemSection() {
+  // Each leak is tagged with what closes it, so the list doubles as a map of
+  // what I build — the last two are the case for the POS platforms.
   const problems = [
-    { icon: Eye, title: "Invisible on Google", desc: "Customers search for what you do — and find your competitors instead." },
-    { icon: MousePointerClick, title: "Visitors bounce", desc: "Slow, confusing sites lose 70% of visitors in the first 8 seconds." },
-    { icon: Phone, title: "No way to book", desc: "Customers want to act now. Phone-tag and contact forms kill the momentum." },
-    { icon: AlertCircle, title: "Looks outdated", desc: "A cheap website makes your business look cheap — no matter how good your work is." },
+    { icon: Eye, title: "Invisible on Google", desc: "Customers search for what you do — and find your competitors instead.", fix: "Website" },
+    { icon: MousePointerClick, title: "Visitors bounce", desc: "Slow, confusing sites lose 70% of visitors in the first 8 seconds.", fix: "Website" },
+    { icon: AlertCircle, title: "Looks outdated", desc: "A cheap website makes your business look cheap — no matter how good your work is.", fix: "Website" },
+    { icon: Phone, title: "No way to book", desc: "Customers want to act now. Phone-tag and contact forms kill the momentum.", fix: "POS" },
+    { icon: Calendar, title: "Bookings live in a notebook", desc: "Paper diaries and chat threads lose slots, and no-shows go untracked.", fix: "POS" },
+    { icon: Receipt, title: "Billing eats your evening", desc: "Manual bills and guessed stock mean you never know what actually made money.", fix: "POS" },
   ];
 
   return (
@@ -127,51 +131,82 @@ export function ProblemSection() {
         <div className="absolute -top-20 left-1/4 h-72 w-72 rounded-full bg-rose-500/20 blur-3xl" />
         <div className="absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-grape/20 blur-3xl" />
       </div>
-      <div className="relative mx-auto max-w-6xl">
-        <Reveal>
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-rose-400/30 bg-rose-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-rose-300 sm:px-3.5 sm:py-1.5 sm:text-xs">
-            <AlertCircle className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> The hard truth
-          </div>
-        </Reveal>
-        <Reveal delay={0.05}>
-          <h2 className="mt-2 max-w-3xl text-balance text-xl font-extrabold tracking-tight sm:mt-5 sm:text-5xl md:text-6xl">
-            Your website is <span className="text-rose-400">costing you customers</span> every single day.
-          </h2>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <p className="mt-2 max-w-2xl text-pretty text-sm text-slate-300 sm:mt-5 sm:text-lg">
-            Not because it's "bad" — but because it was built to look pretty, not to perform. Here's what's quietly bleeding your business:
-          </p>
-        </Reveal>
-
-        <div className="mt-1 grid grid-cols-2 gap-1.5 sm:gap-5 lg:grid-cols-4">
-          {problems.map((p, i) => (
-            <Reveal key={p.title} delay={i * 0.08}>
-              <div className="group relative h-full overflow-hidden rounded-xl border border-white/10 bg-white/5 p-2.5 backdrop-blur sm:rounded-2xl sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:border-rose-400/30 hover:bg-white/10">
-                <div className="absolute right-2 top-2 font-display text-2xl font-extrabold text-white/5 sm:right-4 sm:top-4 sm:text-5xl">
-                  0{i + 1}
-                </div>
-                <div className="relative">
-                  <div className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-rose-500 to-rose-700 text-white shadow-lg sm:h-12 sm:w-12 sm:rounded-xl">
-                    <p.icon className="h-4 w-4 sm:h-6 sm:w-6" />
-                  </div>
-                  <h3 className="mt-2 font-display text-xs font-bold leading-tight text-white sm:mt-4 sm:text-lg">{p.title}</h3>
-                  <p className="mt-0.5 text-[11px] leading-snug text-slate-400 sm:mt-2 sm:text-sm sm:leading-relaxed line-clamp-2 sm:line-clamp-none">{p.desc}</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
+      {/* The copy used to span the full width with four tall cards stacked
+          underneath, which left the right half empty and the section ~800px
+          tall. Side-by-side: the list fills that gap and the rows replace the
+          cards, so the same content reads in roughly half the height. */}
+      <div className="relative mx-auto grid max-w-6xl gap-3 sm:gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+        <div>
+          <Reveal>
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-rose-400/30 bg-rose-500/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-rose-300 sm:px-3.5 sm:py-1.5 sm:text-xs">
+              <AlertCircle className="h-3 w-3 sm:h-3.5 sm:w-3.5" /> The hard truth
+            </div>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h2 className="mt-2 text-balance text-xl font-extrabold tracking-tight sm:mt-5 sm:text-4xl md:text-5xl">
+              Your website is <span className="text-rose-400">costing you customers</span> every single day.
+            </h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-2 text-pretty text-sm text-slate-300 sm:mt-4 sm:text-base">
+              Not because it&apos;s &ldquo;bad&rdquo; — but because it was built to look pretty, not to perform. Six leaks I fix, and what closes each one:
+            </p>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 sm:mt-6">
+              <PremiumButton size="lg" variant="cta" icon={<ArrowRight className="h-4 w-4" />}>
+                Fix my website
+              </PremiumButton>
+              <p className="text-xs font-semibold text-white sm:text-sm">
+                The good news? <span className="text-cta">This is fixable.</span>
+              </p>
+            </div>
+          </Reveal>
         </div>
 
-        <Reveal delay={0.3}>
-          <div className="mt-2 flex flex-col items-center justify-between gap-2 rounded-xl border border-white/10 bg-gradient-to-r from-grape/20 via-royal/20 to-grape/20 p-3 backdrop-blur sm:mt-2 sm:flex-row sm:gap-4 sm:rounded-2xl sm:p-8">
-            <p className="text-pretty text-sm font-semibold text-white sm:text-lg sm:text-xl">
-              The good news? <span className="text-cta">This is fixable.</span>
-            </p>
-            <PremiumButton size="lg" variant="cta" icon={<ArrowRight className="h-4 w-4" />}>
-              Fix my website
-            </PremiumButton>
-          </div>
+        <Reveal delay={0.12}>
+          <ul className="divide-y divide-white/[0.06] overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur sm:rounded-2xl">
+            {problems.map((p) => {
+              const pos = p.fix === "POS";
+              return (
+                <li
+                  key={p.title}
+                  className="group flex items-start gap-2.5 px-2.5 py-2 transition-colors duration-300 hover:bg-white/[0.05] sm:gap-3.5 sm:px-4 sm:py-3"
+                >
+                  <span
+                    className={cn(
+                      "mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-gradient-to-br text-white shadow-lg transition-transform duration-300 group-hover:scale-110 sm:h-9 sm:w-9",
+                      pos ? "from-grape to-royal" : "from-rose-500 to-rose-700",
+                    )}
+                  >
+                    <p.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-baseline justify-between gap-2">
+                      <h3 className="font-display text-xs font-bold leading-tight text-white sm:text-base">
+                        {p.title}
+                      </h3>
+                      {/* The tag is the point: it turns a list of complaints into
+                          a map of the two things I actually build. */}
+                      <span
+                        className={cn(
+                          "shrink-0 rounded-full px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider ring-1 sm:px-2 sm:text-[10px]",
+                          pos
+                            ? "bg-grape/15 text-violet-300 ring-grape/30"
+                            : "bg-rose-500/10 text-rose-300 ring-rose-400/25",
+                        )}
+                      >
+                        {p.fix}
+                      </span>
+                    </div>
+                    <p className="mt-0.5 text-[11px] leading-snug text-slate-400 sm:text-sm">
+                      {p.desc}
+                    </p>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
         </Reveal>
       </div>
     </section>
