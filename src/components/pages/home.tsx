@@ -216,7 +216,10 @@ function Hero({ onNavigate, onCTA }: { onNavigate: (p: PageKey) => void; onCTA: 
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="relative"
+            // HeroVisual is lg-only, but this wrapper was still a grid item
+            // below lg — so the column gap opened ~20px of dead space above
+            // the stats strip on phones. Drop the whole item instead.
+            className="relative max-lg:hidden"
           >
             <HeroVisual y1={y1} y2={y2} />
           </motion.div>
@@ -227,14 +230,16 @@ function Hero({ onNavigate, onCTA }: { onNavigate: (p: PageKey) => void; onCTA: 
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6 }}
-          className="mt-4 grid grid-cols-2 gap-x-2 gap-y-2 rounded-xl border border-slate-200 bg-white/70 p-2.5 backdrop-blur sm:mt-16 sm:grid-cols-4 sm:gap-6 sm:rounded-2xl sm:p-8"
+          // One row of four on phones, not a 2x2 block: the same four numbers
+          // read as a credibility strip instead of the biggest box on screen.
+          className="mt-3 grid grid-cols-4 gap-x-1 rounded-xl border border-slate-200 bg-white/70 px-1.5 py-2 backdrop-blur sm:mt-16 sm:gap-6 sm:rounded-2xl sm:p-8"
         >
           {HERO_STATS.map((s) => (
             <div key={s.label} className="text-center">
-              <div className="font-display text-lg font-extrabold tracking-tight text-navy sm:text-4xl">
+              <div className="font-display text-base font-extrabold tracking-tight text-navy sm:text-4xl">
                 <AnimatedCounter value={s.value} prefix={s.prefix || ""} suffix={s.suffix} decimals={s.value % 1 !== 0 ? 1 : 0} />
               </div>
-              <div className="mt-0.5 text-[11px] font-medium text-slate-500 max-sm:leading-tight sm:mt-1 sm:text-sm">{s.label}</div>
+              <div className="mt-0.5 text-[9px] font-medium text-slate-500 max-sm:leading-tight sm:mt-1 sm:text-sm">{s.label}</div>
             </div>
           ))}
         </motion.div>
