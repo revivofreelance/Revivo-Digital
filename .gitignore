@@ -53,8 +53,6 @@ server.log
 # Skills directory
 /skills/
 
-# Backend deployed separately to Google Apps Script (kept local, not part of the site)
-google-apps-script/
 # npm lockfile — project uses bun
 package-lock.json
 # local scratch file
