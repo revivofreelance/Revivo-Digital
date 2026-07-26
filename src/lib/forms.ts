@@ -13,7 +13,7 @@ declare const process: { env: Record<string, string | undefined> };
 
 const FORMS_ENDPOINT =
   process.env.NEXT_PUBLIC_FORMS_ENDPOINT ||
-  "https://script.google.com/macros/s/AKfycbx7ih7z1hiLExuLwkkCteJsxnn5hHr58UgZbefW9S-L5vdZ0gwSOk--tOJYfxDCEy4-/exec";
+  "https://script.google.com/macros/s/AKfycbzhQUuMLKgZ_SL5B6WHeZHANm2d5w1ghCZIEEr78iQqEV6qeBGlJ9kxUJZVl7wkgLMV/exec";
 
 // ── Client-side abuse limits (per browser/device) ───────────────────────────
 // First line of defence: stops a real visitor (or a casual spammer using the
