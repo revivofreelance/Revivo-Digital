@@ -63,7 +63,7 @@ export function Navbar({
               <span className="whitespace-nowrap font-display text-sm font-bold tracking-tight text-navy sm:text-lg">
                 Revivo
               </span>
-              <span className="whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.12em] text-slate-500 sm:text-xs sm:tracking-[0.18em] lg:text-[9px] lg:tracking-[0.1em] xl:text-xs xl:tracking-[0.18em]">
+              <span className="whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.1em] text-slate-500 sm:text-[10px] sm:tracking-[0.14em] lg:text-[9px] lg:tracking-[0.08em] xl:text-[10px] xl:tracking-[0.12em]">
                 Brings your customers back
               </span>
             </div>
