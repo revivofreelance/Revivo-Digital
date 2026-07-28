@@ -116,7 +116,7 @@ export function PosShowcase() {
           </div>
         </Reveal>
 
-        <div className="mt-2.5 grid gap-2.5 sm:mt-6 sm:gap-6 lg:grid-cols-[1.55fr_1fr] lg:items-start">
+        <div className="mt-2.5 grid gap-2.5 sm:mt-6 sm:gap-6 lg:grid-cols-[1.55fr_1fr] lg:items-stretch">
           {/* ---- The screen itself, in browser chrome ---- */}
           <Reveal delay={0.12}>
             <div className="overflow-hidden rounded-xl border border-white/10 bg-ink shadow-lift sm:rounded-2xl">
@@ -193,8 +193,8 @@ export function PosShowcase() {
           </Reveal>
 
           {/* ---- Product detail ---- */}
-          <Reveal delay={0.16}>
-            <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-soft sm:rounded-2xl sm:p-6">
+          <Reveal delay={0.16} className="h-full">
+            <div className="flex h-full flex-col rounded-xl border border-slate-200 bg-white p-3 shadow-soft sm:rounded-2xl sm:p-6">
               <h3 className="font-display text-base font-bold text-navy sm:text-2xl">
                 {product.name}
               </h3>
@@ -219,11 +219,28 @@ export function PosShowcase() {
                 ))}
               </ul>
 
+              {/* Four bullets left the panel a third empty next to a tall
+                  screenshot. These are the real secondary modules off the
+                  product's own page — the space now says what's in the box. */}
+              <p className="mt-3 hidden text-[10px] font-bold uppercase tracking-wider text-slate-400 sm:mt-5 sm:block">
+                Also inside
+              </p>
+              <div className="mt-1.5 hidden flex-wrap gap-1.5 sm:mt-2.5 sm:flex">
+                {product.modules.map((m) => (
+                  <span
+                    key={m}
+                    className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-[11px] font-medium text-slate-600"
+                  >
+                    {m}
+                  </span>
+                ))}
+              </div>
+
               <Link
                 href={product.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-navy px-4 py-2.5 text-[11px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-royal max-sm:w-full sm:mt-6 sm:px-5 sm:py-3 sm:text-sm"
+                className="group mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-navy px-4 py-2.5 text-[11px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-royal max-sm:w-full sm:mt-6 sm:self-start sm:px-5 sm:py-3 sm:text-sm"
               >
                 Explore the full {product.name} page
                 <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

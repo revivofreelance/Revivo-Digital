@@ -499,32 +499,37 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                     {hero && <div className="absolute inset-0 bg-grid-dark opacity-40" />}
                     <div className="absolute -right-8 -top-8 hidden h-24 w-24 rounded-full bg-grape/5 transition-all duration-500 group-hover:scale-150 group-hover:bg-grape/10 sm:block" />
                     <div className="relative flex h-full flex-col">
-                      <div
-                        className={cn(
-                          "grid place-items-center rounded-lg text-white shadow-soft transition-transform duration-300 group-hover:scale-110 sm:rounded-xl",
-                          hero
-                            ? "h-9 w-9 bg-cta-gradient sm:h-11 sm:w-11"
-                            : "h-7 w-7 bg-gradient-to-br from-grape to-royal sm:h-9 sm:w-9",
-                        )}
-                      >
-                        <s.icon className={cn("h-3.5 w-3.5", hero ? "sm:h-5 sm:w-5" : "sm:h-4 sm:w-4")} />
+                      {/* Icon, category and title share one row on desktop. Stacked
+                          they cost three rows of height across eight tiles and the
+                          icon left a wide empty gutter beside it. */}
+                      <div className="sm:flex sm:items-center sm:gap-3">
+                        <div
+                          className={cn(
+                            "grid shrink-0 place-items-center rounded-lg text-white shadow-soft transition-transform duration-300 group-hover:scale-110 sm:rounded-xl",
+                            hero
+                              ? "h-9 w-9 bg-cta-gradient sm:h-11 sm:w-11"
+                              : "h-7 w-7 bg-gradient-to-br from-grape to-royal sm:h-9 sm:w-9",
+                          )}
+                        >
+                          <s.icon className={cn("h-3.5 w-3.5", hero ? "sm:h-5 sm:w-5" : "sm:h-4 sm:w-4")} />
+                        </div>
+                        <div className="min-w-0">
+                          <span className={cn("hidden text-[10px] font-bold uppercase tracking-wider sm:block", hero ? "text-cta" : "text-violet-300")}>
+                            {s.category}
+                          </span>
+                          <h3
+                            className={cn(
+                              "mt-1 font-display font-bold leading-tight sm:mt-0",
+                              hero ? "text-[13px] text-white sm:text-2xl" : "text-[11px] text-white sm:text-base",
+                            )}
+                          >
+                            {s.title}
+                          </h3>
+                        </div>
                       </div>
-                      <div className="mt-1.5 hidden items-center gap-2 sm:flex">
-                        <span className={cn("text-[10px] font-bold uppercase tracking-wider", hero ? "text-cta" : "text-violet-300")}>
-                          {s.category}
-                        </span>
-                      </div>
-                      <h3
-                        className={cn(
-                          "mt-1 font-display font-bold leading-tight",
-                          hero ? "text-[13px] text-white sm:text-2xl" : "text-[11px] text-white sm:text-base",
-                        )}
-                      >
-                        {s.title}
-                      </h3>
                       <p
                         className={cn(
-                          "mt-0.5 leading-snug sm:mt-1 sm:leading-relaxed",
+                          "mt-0.5 leading-snug sm:mt-3 sm:leading-relaxed",
                           hero
                             ? "max-w-md text-[11px] text-slate-300 sm:text-sm"
                             : "line-clamp-2 text-[11px] text-slate-400 sm:line-clamp-none sm:text-[13px]",

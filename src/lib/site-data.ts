@@ -2537,6 +2537,9 @@ export type PosProduct = {
   accent: string; // tailwind gradient classes
   image: string;
   features: string[];
+  /** Secondary modules, lifted from the product's own page. Shown as chips in
+   *  the home-page showcase, where four features left the panel half empty. */
+  modules: string[];
   /** Real product screens, in demo order — driven by the home-page showcase. */
   screens: { label: string; src: string }[];
 };
@@ -2553,6 +2556,11 @@ export const POS_PRODUCTS: PosProduct[] = [
     accent: "from-sky-500 to-blue-500",
     image: "/pos-media/clinic/03-dashboard.png",
     features: ["Live patient queue", "Consultation cockpit", "Pharmacy & billing", "Recall & follow-ups"],
+    modules: [
+      "EMR & SOAP notes", "Digital prescriptions", "Vitals", "Lab & radiology",
+      "Insurance claims", "Patient timeline", "Inventory", "Role permissions",
+      "Offline-first", "Cloud sync", "Telemedicine", "Analytics",
+    ],
     screens: [
       { label: "Live queue", src: "/pos-media/clinic/02-today-live-queue.png" },
       { label: "Dashboard", src: "/pos-media/clinic/03-dashboard.png" },
@@ -2572,6 +2580,11 @@ export const POS_PRODUCTS: PosProduct[] = [
     accent: "from-amber-500 to-orange-500",
     image: "/pos-media/restaurant/02-dashboard.png",
     features: ["Kitchen display system", "Table & waitlist management", "Menu & inventory", "Real-time reporting"],
+    modules: [
+      "QR ordering", "Split payments", "Reservations", "Recipe costing",
+      "Discount engine", "Tax handling", "Multi-outlet", "Printer integration",
+      "Customer database", "Offline support", "Cloud sync", "Sales analytics",
+    ],
     screens: [
       { label: "New order", src: "/pos-media/restaurant/01-new-order.png" },
       { label: "Kitchen display", src: "/pos-media/restaurant/03-kitchen-display.png" },
@@ -2591,6 +2604,11 @@ export const POS_PRODUCTS: PosProduct[] = [
     accent: "from-fuchsia-500 to-purple-500",
     image: "/pos-media/salon/01-dashboard.png",
     features: ["Calendar & booking", "Client memberships", "Commission tracking", "Inventory & reports"],
+    modules: [
+      "Smart calendar", "Walk-ins", "POS checkout", "Client CRM",
+      "Gift cards", "Staff scheduling", "Payroll", "Service packages",
+      "Product inventory", "Multi-location", "Cloud sync", "Reports",
+    ],
     screens: [
       { label: "Dashboard", src: "/pos-media/salon/01-dashboard.png" },
       { label: "Calendar", src: "/pos-media/salon/02-calendar.png" },
