@@ -448,15 +448,17 @@ const HERO_FUNNEL = [
 function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) {
   const top = SERVICES.slice(0, 8);
   return (
-    <section className="relative overflow-hidden bg-navy px-4 py-3 text-white sm:px-6 sm:py-10 lg:px-8">
+    <section className="relative overflow-hidden bg-navy px-4 py-3 text-white sm:px-6 sm:py-8 lg:px-8">
       <div className="absolute inset-0 bg-grid-dark opacity-30" />
       <div className="relative mx-auto max-w-7xl">
-        <div className="flex flex-col items-start justify-between gap-3 sm:gap-6 md:flex-row md:items-end">
+        <div className="flex flex-col items-start justify-between gap-3 sm:gap-5 md:flex-row md:items-end">
           <SectionHeading
             eyebrow="What I do"
             title={<>Everything your business needs <span className="text-gradient-purple">to win online.</span></>}
             subtitle="From a premium business website to booking systems, SEO, and ongoing growth — one partner, end-to-end."
-            className="[&_h2]:text-white [&_p]:text-slate-300"
+            // Dialled down from the shared heading scale: 8 tiles plus a display
+            // headline made this the longest band on the page.
+            className="[&_h2]:text-white [&_p]:text-slate-300 sm:[&_h2]:text-3xl sm:[&_p]:text-base lg:[&_h2]:text-4xl"
           />
           <Reveal delay={0.1}>
             <PremiumButton variant="outline" size="md" onClick={() => onNavigate("services")} icon={<ArrowRight className="h-4 w-4" />} className="border-white/20 bg-white/5 text-white backdrop-blur hover:border-white/40 hover:bg-white/10">
@@ -465,7 +467,7 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
           </Reveal>
         </div>
 
-        <Stagger className="mt-2 grid grid-cols-2 gap-2 sm:mt-4 sm:gap-5 lg:auto-rows-fr lg:grid-cols-4" stagger={0.06}>
+        <Stagger className="mt-2 grid grid-cols-2 gap-2 sm:mt-4 sm:gap-4 lg:auto-rows-fr lg:grid-cols-4" stagger={0.06}>
           {top.map((s, i) => {
             // Bento rhythm: the first card owns a 2×2 block, card 7 runs wide.
             const hero = i === 0;
@@ -485,7 +487,7 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                   <button
                     onClick={() => onNavigate("services")}
                     className={cn(
-                      "group relative flex h-full w-full flex-col overflow-hidden rounded-xl border p-2 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lift sm:rounded-2xl sm:p-6",
+                      "group relative flex h-full w-full flex-col overflow-hidden rounded-xl border p-2 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lift sm:rounded-2xl sm:p-5",
                       // On the navy band a bg-navy hero card would vanish into the
                       // section, so the hero gets a lit gradient surface and the
                       // siblings a plain glass one.
@@ -501,11 +503,11 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                         className={cn(
                           "grid place-items-center rounded-lg text-white shadow-soft transition-transform duration-300 group-hover:scale-110 sm:rounded-xl",
                           hero
-                            ? "h-9 w-9 bg-cta-gradient sm:h-14 sm:w-14"
-                            : "h-7 w-7 bg-gradient-to-br from-grape to-royal sm:h-11 sm:w-11",
+                            ? "h-9 w-9 bg-cta-gradient sm:h-11 sm:w-11"
+                            : "h-7 w-7 bg-gradient-to-br from-grape to-royal sm:h-9 sm:w-9",
                         )}
                       >
-                        <s.icon className={cn("h-3.5 w-3.5", hero ? "sm:h-7 sm:w-7" : "sm:h-5 sm:w-5")} />
+                        <s.icon className={cn("h-3.5 w-3.5", hero ? "sm:h-5 sm:w-5" : "sm:h-4 sm:w-4")} />
                       </div>
                       <div className="mt-1.5 hidden items-center gap-2 sm:flex">
                         <span className={cn("text-[10px] font-bold uppercase tracking-wider", hero ? "text-cta" : "text-violet-300")}>
@@ -515,7 +517,7 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                       <h3
                         className={cn(
                           "mt-1 font-display font-bold leading-tight",
-                          hero ? "text-[13px] text-white sm:text-3xl" : "text-[11px] text-white sm:text-lg",
+                          hero ? "text-[13px] text-white sm:text-2xl" : "text-[11px] text-white sm:text-base",
                         )}
                       >
                         {s.title}
@@ -524,8 +526,8 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                         className={cn(
                           "mt-0.5 leading-snug sm:mt-1 sm:leading-relaxed",
                           hero
-                            ? "max-w-md text-[11px] text-slate-300 sm:text-base"
-                            : "line-clamp-2 text-[11px] text-slate-400 sm:line-clamp-none sm:text-sm",
+                            ? "max-w-md text-[11px] text-slate-300 sm:text-sm"
+                            : "line-clamp-2 text-[11px] text-slate-400 sm:line-clamp-none sm:text-[13px]",
                         )}
                       >
                         {s.short}
@@ -536,7 +538,7 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                           the card is selling. Desktop-only: on mobile the tile is
                           short already and filler would just re-bloat it. */}
                       {hero && (
-                        <div aria-hidden className="mt-6 hidden lg:block">
+                        <div aria-hidden className="mt-4 hidden lg:block">
                           <div className="overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] backdrop-blur transition-colors duration-500 group-hover:border-grape/30">
                             <div className="flex items-center gap-1.5 border-b border-white/10 bg-white/5 px-3 py-2.5">
                               <span className="h-2 w-2 rounded-full bg-white/20" />
@@ -548,7 +550,7 @@ function ServicesOverview({ onNavigate }: { onNavigate: (p: PageKey) => void }) 
                               </span>
                               <span className="w-10" />
                             </div>
-                            <div className="space-y-3.5 px-4 py-4">
+                            <div className="space-y-2.5 px-4 py-3">
                               {HERO_FUNNEL.map((f) => (
                                 <div key={f.label}>
                                   <div className="flex items-baseline justify-between">
