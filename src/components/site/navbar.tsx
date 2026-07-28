@@ -49,11 +49,16 @@ export function Navbar({
             className="group flex shrink-0 items-center gap-2.5 sm:gap-4 focus:outline-none"
             aria-label="Go to home"
           >
-            <span className="relative grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-xl bg-navy text-white shadow-lift sm:h-12 sm:w-12">
-              <span className="absolute inset-0 bg-gradient-to-br from-grape via-royal to-navy opacity-90" />
-              <span className="relative font-display text-xl font-extrabold tracking-tight sm:text-2xl">R</span>
-              <span className="absolute -right-1 -top-1 h-2 w-2 rounded-full bg-cta animate-pulse" />
-            </span>
+            {/* The mark ships with its own dark tile; rounded-[22%] matches that
+                tile's radius and clips the few white pixels left in the corners
+                by the crop. */}
+            <img
+              src="/logo-mark.png"
+              alt=""
+              width={96}
+              height={96}
+              className="h-10 w-10 shrink-0 rounded-[22%] shadow-lift transition-transform duration-300 group-hover:scale-105 sm:h-12 sm:w-12"
+            />
             <div className="flex flex-col items-start gap-0.5 leading-none sm:gap-1">
               <span className="whitespace-nowrap font-display text-sm font-bold tracking-tight text-navy sm:text-lg">
                 Revivo

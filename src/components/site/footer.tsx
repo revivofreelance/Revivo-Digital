@@ -58,10 +58,13 @@ export function Footer({
           {/* Brand — spans full width on mobile */}
           <div className="col-span-2 lg:col-span-1">
             <button onClick={() => handleNav("home")} className="flex items-center gap-3 sm:gap-4">
-              <span className="relative grid h-10 w-10 place-items-center overflow-hidden rounded-xl bg-white/5 ring-1 ring-white/10 sm:h-12 sm:w-12">
-                <span className="absolute inset-0 bg-gradient-to-br from-grape via-royal to-navy opacity-80" />
-                <span className="relative font-display text-xl font-extrabold text-white sm:text-2xl">R</span>
-              </span>
+              <img
+                src="/logo-mark.png"
+                alt=""
+                width={96}
+                height={96}
+                className="h-10 w-10 shrink-0 rounded-[22%] ring-1 ring-white/10 sm:h-12 sm:w-12"
+              />
               <div className="flex flex-col items-start gap-0.5 leading-none sm:gap-1">
                 <span className="font-display text-sm font-bold text-white sm:text-lg">Revivo</span>
                 <span className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-400 sm:text-xs sm:tracking-[0.18em]">Brings your customers back</span>
